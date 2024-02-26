@@ -1,0 +1,14 @@
+---
+import Logo from '../Logo/index.astro';
+import { NavBar } from './Navbar';
+---
+
+<header class='w-full bg-orange-500 py-2'>
+  <div class='container flex items-center justify-between'>
+    <a href='/' class='z-50'>
+      <Logo size={52} />
+    </a>
+
+    <NavBar client:load />
+  </div>
+</header>

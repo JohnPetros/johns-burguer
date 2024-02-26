@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+
+type Props = {
+  size: number;
+};
+
+const { size } = Astro.props;
+---
+
+<Image
+  class='logo'
+  src='/images/logo.png'
+  width={size}
+  height={size}
+  alt="John's Burguer"
+/>
+
+<style>
+  .logo {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+</style>
