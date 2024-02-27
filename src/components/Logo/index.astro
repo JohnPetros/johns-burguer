@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import LogoImage from '../../assets/images/logo.png';
 
 type Props = {
   size: number;
@@ -10,7 +11,7 @@ const { size } = Astro.props;
 
 <Image
   class='logo'
-  src='/images/logo.png'
+  src={LogoImage}
   width={size}
   height={size}
   alt="John's Burguer"

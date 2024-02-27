@@ -1,5 +1,5 @@
 import { NavLink } from "../NavLink"
-import { NAV_LINKS } from "../constants/nav-links"
+import { NAV_LINKS } from "../../../../constants/nav-links"
 
 export function Nav() {
   return (

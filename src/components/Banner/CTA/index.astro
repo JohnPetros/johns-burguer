@@ -1,0 +1,20 @@
+---
+import Button from '../../Button/index.astro';
+import { Icon } from '../../Icon';
+---
+
+<>
+  <span class='font-cursive text-3xl text-yellow-400'> Are you hungry?</span>
+  <h1 class='mt-4 text-xl uppercase text-white'>
+    Order your John&apos; burguer now!
+    <br />
+    Fast delivery.
+  </h1>
+  <div class='mt-4 flex flex-col gap-3 md:flex-row'>
+    <Button>Fazer pedido online</Button>
+    <Button>
+      <Icon value='whatsapp' />
+      Comprar pelo whatsapp
+    </Button>
+  </div>
+</>

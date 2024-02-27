@@ -1,0 +1,22 @@
+---
+import { twMerge } from 'tailwind-merge';
+
+type Props = {
+  title: string;
+  direction?: 'row' | 'col';
+};
+
+const { title, direction = 'col' } = Astro.props;
+---
+
+<div class='flex flex-col text-center sm:text-left'>
+  <strong class='text-white'>{title}</strong>
+  <ul
+    class={twMerge(
+      'mt-3 flex items-center gap-2 sm:items-start',
+      direction === 'col' ? 'flex-col' : 'flex-row',
+    )}
+  >
+    <slot />
+  </ul>
+</div>

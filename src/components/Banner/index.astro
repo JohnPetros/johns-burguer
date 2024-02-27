@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import CTA from './CTA/index.astro';
+import Banner1 from '../../assets/images/banner-1.jpg';
+---
+
+<section
+  id='home'
+  class='relative flex h-[24rem] w-full items-center md:h-[32rem]'
+>
+  <div class='absolute w-full'>
+    <span class='absolute inset-0 z-30 block h-full w-full bg-black opacity-50'
+    ></span>
+    <Image
+      src={Banner1}
+      class='w-full h-[24rem] md:h-[32rem]'
+      alt='hamburguer'
+      style={{ objectFit: 'cover' }}
+    />
+  </div>
+  <div class='container z-30 h-max w-max'>
+    <CTA />
+  </div>
+</section>

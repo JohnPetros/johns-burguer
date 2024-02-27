@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+
+import List from './List/index.astro';
+import Item from './List/Item/index.astro';
+import Logo from '../Logo/index.astro';
+
+import { Icon } from '../Icon';
+
+import { NAV_LINKS } from '../../constants/nav-links';
+---
+
+<footer class='mt-24 bg-orange-500'>
+  <div
+    class='container flex w-full flex-col items-center justify-items-end gap-4 py-6 sm:grid sm:grid-cols-2 sm:items-start md:grid-cols-3 md:gap-0 lg:grid-cols-4'
+  >
+    <div class='justify-self-start'>
+      <Logo size={120} />
+    </div>
+    <div class='justify-self-start lg:justify-self-auto'>
+      <List title='Contact us'>
+        <Item>
+          <>
+            <Icon value='phone' width={16} height={16} />
+            (34) 3333-3333
+          </>
+        </Item>
+        <Item>
+          <>
+            <Icon value='whatsapp' width={16} height={16} />
+            (34) 9 3333-3333
+          </>,
+        </Item>
+        <Item>
+          <>
+            <Icon value='mail' width={16} height={16} />
+            sac@johnsburguer.com
+          </>,
+        </Item>
+      </List>
+    </div>
+    <div class='justify-self-start lg:justify-self-auto'>
+      <List title='What are you looking for?'>
+        {
+          NAV_LINKS.map(navLink => (
+            <Item>
+              <a href={navLink.href}>{navLink.title}</a>
+            </Item>
+          ))
+        }
+      </List>
+    </div>
+    <div class='justify-self-start lg:justify-self-auto'>
+      <List title='Contact us'>
+        <Item>
+          <a
+            href='#'
+            class='grid place-content-center rounded-full bg-zinc-900 p-2'
+          >
+            <Icon value='whatsapp' width={20} height={20} />
+          </a>
+        </Item>
+        <Item>
+          <a
+            href='#'
+            class='grid place-content-center rounded-full bg-zinc-900 p-2'
+          >
+            <Icon value='instagram' width={20} height={20} />
+          </a>
+        </Item>
+        <Item>
+          <a
+            href='#'
+            class='grid place-content-center rounded-full bg-zinc-900 p-2'
+          >
+            <Icon value='facebook' width={20} height={20} />
+          </a>
+        </Item>
+      </List>
+    </div>
+  </div>
+</footer>

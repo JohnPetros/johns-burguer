@@ -1,6 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header/index.astro';
+import Banner from '../components/Banner/index.astro';
+import About from '../components/About/index.astro';
+import Contact from '../components/Contact/index.astro';
+import Footer from '../components/Footer/index.astro';
 ---
 
-<Layout title="John's Burguer"><Header /></Layout>
+<Layout title="John's Burguer">
+  <Header />
+  <Banner />
+  <div class='w-full space-y-40 mt-24'>
+    <About />
+    <Contact />
+  </div>
+  <Footer />
+</Layout>

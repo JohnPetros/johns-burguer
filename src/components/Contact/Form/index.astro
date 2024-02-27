@@ -1,0 +1,19 @@
+---
+import Input from '../../Input/index.astro';
+import Label from '../../Label/index.astro';
+import TextArea from '../../TextArea/index.astro';
+import Button from '../../Button/index.astro';
+---
+
+<form class='rounded-lg shadow-lg p-6'>
+  <fieldset class='flex flex-col gap-6'>
+    <legend class='text-orange-500 text-xl text-center uppercase font-semibold'
+      >Contact us</legend
+    >
+    <Input id='name' label='Name' placeholder='John Petros da Silva' />
+    <Input id='phone' label='Phone' placeholder='(xxx) xxx-xxx' />
+    <Input id='email' label='Email' placeholder='(xxx) xxx-xxx' />
+    <TextArea id='message' name='message' />
+  </fieldset>
+  <Button class='ml-auto'>Enviar</Button>
+</form>

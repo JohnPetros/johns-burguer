@@ -1,14 +1,10 @@
----
-type Props = {
-  title: string;
-  body: string;
-  href: string;
-};
+<button
+  class='flex items-center justify-center gap-2 rounded-md bg-orange-500 px-3 py-2 text-sm text-gray-100 hover:shadow-md hover:shadow-yellow-400 transition-shadow font-semibold'
+>
+  <slot />
+</button>
 
-const { href, title, body } = Astro.props;
----
-
-<li class='link-card'>
+<!-- <li class='link-card'>
   <a href={href}>
     <h2>
       {title}
@@ -19,6 +15,7 @@ const { href, title, body } = Astro.props;
     </p>
   </a>
 </li>
+
 <style>
   .link-card {
     list-style: none;
@@ -58,4 +55,4 @@ const { href, title, body } = Astro.props;
   .link-card:is(:hover, :focus-within) h2 {
     color: rgb(var(--accent-light));
   }
-</style>
+</style> -->
