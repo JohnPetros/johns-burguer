@@ -4,9 +4,10 @@ import Label from '../Label/index.astro';
 type Props = {
   id: string;
   name: string;
+  placeholder: string;
 };
 
-const { id, name } = Astro.props;
+const { id, name, placeholder } = Astro.props;
 ---
 
 <div class='focus-within:text-orange-500 flex flex-col gap-2'>
@@ -14,6 +15,7 @@ const { id, name } = Astro.props;
   <textarea
     id={id}
     name={name}
-    class='min-height-10 rounded-md border-gray-800 p-3 focus-visible:ring-2 focus-visible:ring-orange-500 bg-gray-100 placeholder:text-gray-400 text-gray-800'
+    placeholder={placeholder}
+    class='min-height-12 rounded-md border-gray-800 p-3 focus-visible:ring-2 focus-visible:ring-orange-500 bg-gray-100 placeholder:text-gray-400 text-gray-800'
   ></textarea>
 </div>

@@ -1,6 +1,5 @@
 ---
 import Input from '../../Input/index.astro';
-import Label from '../../Label/index.astro';
 import TextArea from '../../TextArea/index.astro';
 import Button from '../../Button/index.astro';
 ---
@@ -12,8 +11,12 @@ import Button from '../../Button/index.astro';
     >
     <Input id='name' label='Name' placeholder='John Petros da Silva' />
     <Input id='phone' label='Phone' placeholder='(xxx) xxx-xxx' />
-    <Input id='email' label='Email' placeholder='(xxx) xxx-xxx' />
-    <TextArea id='message' name='message' />
+    <Input id='email' label='Email' placeholder='johnpetros@email.com' />
+    <TextArea
+      id='message'
+      name='message'
+      placeholder='I want the biggest burguer dude.'
+    />
   </fieldset>
-  <Button class='ml-auto'>Enviar</Button>
+  <Button className='mx-auto mt-6 px-12'>Enviar</Button>
 </form>

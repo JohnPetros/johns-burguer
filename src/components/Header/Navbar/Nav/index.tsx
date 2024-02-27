@@ -4,7 +4,7 @@ import { NAV_LINKS } from "../../../../constants/nav-links"
 export function Nav() {
   return (
     <nav className="z-40 h-full w-full bg-orange-500 md:static md:h-auto md:w-auto">
-      <ul className="flex flex-col items-center justify-center gap-12 md:flex-row md:gap-4">
+      <ul className="flex flex-col items-center justify-center lg:gap-12 md:flex-row">
         {NAV_LINKS.map((navLink) => (
           <li key={navLink.title}>
             <NavLink
