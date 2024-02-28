@@ -1,0 +1,32 @@
+:root {
+  --cursive: 'Oleo Script Swash Caps', cursive;
+
+  --header-height: 12vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  list-style: none;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  @apply max-w-[1200px] w-full mx-auto md:px-0 px-6;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+}
+
+a:focus-visible,
+button:focus-visible {
+  @apply ring-2 ring-gray-100
+}
