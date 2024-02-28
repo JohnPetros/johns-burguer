@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import { List, X } from '@phosphor-icons/react'
-import { motion, type Variants, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, type Variants, motion } from 'framer-motion'
+import { useState } from 'react'
 import { Nav } from './Nav'
 
 const navAnimations: Variants = {
@@ -21,11 +21,15 @@ export function NavBar() {
 
   return (
     <>
-      <button className=" z-50 block md:hidden" onClick={handleHamburguerMenu}>
+      <button
+        type='button'
+        className=' z-50 block md:hidden'
+        onClick={handleHamburguerMenu}
+      >
         {isVisible ? (
-          <X size={32} className="text-white" weight="bold" />
+          <X size={32} className='text-white' weight='bold' />
         ) : (
-          <List size={32} className="text-white" weight="bold" />
+          <List size={32} className='text-white' weight='bold' />
         )}
       </button>
 
@@ -33,17 +37,17 @@ export function NavBar() {
         {isVisible && (
           <motion.div
             variants={navAnimations}
-            initial="down"
+            initial='down'
             animate={isVisible ? 'up' : 'down'}
             transition={{ type: 'tween' }}
-            exit="down"
-            className="absolute inset-0 z-40 h-screen w-screen md:hidden "
+            exit='down'
+            className='absolute inset-0 z-40 h-screen w-screen md:hidden '
           >
             <Nav />
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="hidden md:block">
+      <div className='hidden md:block'>
         <Nav />
       </div>
     </>

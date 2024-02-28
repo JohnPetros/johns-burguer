@@ -1,0 +1,25 @@
+---
+import type { Product } from '../../../@types/Product';
+import ProductCard from './ProductCard/index.astro';
+
+type Props = {
+  items: Product[];
+};
+
+const { items } = Astro.props;
+---
+
+<div class='grid grid-cols-3 gap-3 rounded-md border border-orange-500'>
+  {
+    items.map(item => (
+      <ProductCard
+        id={item.id}
+        name={item.name}
+        image={item.image}
+        price={item.price}
+        description={item.description}
+        category={item.category}
+      />
+    ))
+  }
+</div>

@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import { CartModal } from '../../../CartModal';
+import { Button } from '../../../Button';
+import type { Category } from '../../../../@types/Category';
+
+type Props = {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  price: number;
+  category: Category;
+};
+
+const { id, name, image, price, category } = Astro.props;
+---
+
+<div class='shadow-md flex flex-col rounded-md'>
+  <Image
+    style={{ objectFit: 'cover' }}
+    src={image}
+    width={500}
+    height={400}
+    alt={name}
+  />
+  <div class='p-4'>
+    <strong class='uppercase text-gray-800 font-semibold'>{name}</strong>
+    <div class='flex items-center justify-between mt-3'>
+      <span class='block text-gray-800 font-semibold text-lg'>${price}</span>
+      <CartModal client:load product={{ id, name, image, price, category }}>
+        Add to Cart
+      </CartModal>
+    </div>
+  </div>
+</div>
