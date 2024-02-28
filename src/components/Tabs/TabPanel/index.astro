@@ -1,0 +1,12 @@
+---
+type Props = {
+  id: string;
+  label: string;
+};
+
+const { id, label } = Astro.props;
+---
+
+<div id={id} role='tabpanel' aria-labelledby={label}>
+  <slot />
+</div>
