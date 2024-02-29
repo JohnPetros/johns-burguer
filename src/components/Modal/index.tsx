@@ -1,10 +1,16 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Slot } from '@radix-ui/react-slot'
-import { Fragment, type ReactNode } from 'react'
+import {
+  type ForwardedRef,
+  Fragment,
+  type ReactNode,
+  forwardRef,
+  useImperativeHandle,
+} from 'react'
 
 import { Button } from '../Button'
 import { Icon } from '../Icon'
 
+import type { ModalRef } from './types/ModalRef'
 import { useModal } from './useModal'
 
 type ModalProps = {
@@ -13,8 +19,18 @@ type ModalProps = {
   trigger: ReactNode
 }
 
-export function Modal({ children, trigger, title }: ModalProps) {
+const ModalComponent = (
+  { children, trigger, title }: ModalProps,
+  ref: ForwardedRef<ModalRef>
+) => {
   const { open, close, isOpen } = useModal()
+
+  useImperativeHandle(ref, () => {
+    return {
+      open,
+      close,
+    }
+  })
 
   return (
     <>
@@ -47,7 +63,7 @@ export function Modal({ children, trigger, title }: ModalProps) {
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'
               >
-                <Dialog.Panel className='w-full max-h-[75vh] max-w-md transform overflow-auto rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
+                <Dialog.Panel className='w-full max-h-[75vh] max-w-lg transform overflow-auto rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
                   <header className='flex justify-end'>
                     {title && (
                       <Dialog.Title
@@ -71,3 +87,5 @@ export function Modal({ children, trigger, title }: ModalProps) {
     </>
   )
 }
+
+export const Modal = forwardRef(ModalComponent)
