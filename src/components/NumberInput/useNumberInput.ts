@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export function useNumberInput(defualtNumber: number, onChange: (newNumber: number) => void) {
   const [number, setNumber] = useState(defualtNumber)
@@ -15,6 +15,10 @@ export function useNumberInput(defualtNumber: number, onChange: (newNumber: numb
     setNumber(newNumber)
     onChange(newNumber)
   }
+
+  useEffect(() => {
+    setNumber(defualtNumber)
+  }, [defualtNumber])
 
   return {
     number,
