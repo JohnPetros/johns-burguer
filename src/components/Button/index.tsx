@@ -3,15 +3,22 @@ import { type ClassNameValue, twMerge } from 'tailwind-merge'
 
 type ButtonProps = {
   children: ReactNode
+  type?: 'button' | 'submit'
   className?: ClassNameValue
   isInverted?: boolean
   onClick?: VoidFunction
 }
 
-export function Button({ className, isInverted, children, onClick }: ButtonProps) {
+export function Button({
+  children,
+  type = 'button',
+  className,
+  isInverted,
+  onClick,
+}: ButtonProps) {
   return (
     <button
-      type='button'
+      type={type}
       className={twMerge(
         'flex items-center justify-center gap-2 rounded-md bg-orange-500 px-3 py-2 text-sm text-gray-100 hover:shadow-md hover:shadow-yellow-400 transition-shadow font-semibold',
         className,
