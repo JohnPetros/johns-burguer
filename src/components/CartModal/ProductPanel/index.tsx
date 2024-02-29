@@ -1,4 +1,3 @@
-import { useIsMounted } from 'usehooks-ts'
 import type { Category } from '../../../@types/Category'
 import { Button } from '../../Button'
 import { NumberInput } from '../../NumberInput'
@@ -10,15 +9,19 @@ import { useProductPanel } from './useProductPanel'
 type ProductPanelProps = {
   productId: string
   productName: string
+  productImage: string
   productPrice: number
   category: Category
+  changeToCartPanel: VoidFunction
 }
 
 export function ProductPanel({
   productId,
   productName,
   productPrice,
+  productImage,
   category,
+  changeToCartPanel,
 }: ProductPanelProps) {
   const {
     condiment,
@@ -32,8 +35,10 @@ export function ProductPanel({
       id: productId,
       name: productName,
       price: productPrice,
+      image: productImage,
     },
-    category
+    category,
+    changeToCartPanel
   )
 
   return (

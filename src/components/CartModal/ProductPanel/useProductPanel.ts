@@ -1,25 +1,27 @@
 import { type FormEvent, useEffect, useState } from "react"
-import { useLocalStorage } from 'usehooks-ts'
 
 import type { Category } from "../../../@types/Category"
 import type { Product } from "../../../@types/Product"
 
 import { useCartStore } from "../../../stores/CartStore"
 import type { CartItem } from "../../../stores/CartStore/types/CartItem"
-import { CATEGORIES_RADIO_GROUPS } from "./constants/categories-radio-groups"
 
-import { STORAGE } from "../../../utils/constants/storage"
+import { CATEGORIES_RADIO_GROUPS } from "./constants/categories-radio-groups"
 
 type Condiment = Record<string, string>
 
-export function useProductPanel(product: Pick<Product, 'id' | 'name' | 'price'>, category: Category) {
+export function useProductPanel(
+  product: Pick<Product, 'id' | 'name' | 'price' | 'image'>,
+  category: Category,
+  changeToCartPanel: VoidFunction
+) {
   const [condiment, setCondiment] = useState<Condiment>({})
   const [quantity, setQuantity] = useState(1)
   const [price, setPrice] = useState(product.price)
 
-  const [storagedCondiment, setStoragedCondiment] = useLocalStorage(STORAGE.keys.activeProductOnModal, JSON.stringify({ ...condiment, quantity }))
-
   const { state, actions } = useCartStore()
+
+  const hasCartItem = state.items.some(({ id }) => id === product.id)
 
   function calculateCartItemPrice(condiment: Condiment) {
     let price = product.price
@@ -43,38 +45,59 @@ export function useProductPanel(product: Pick<Product, 'id' | 'name' | 'price'>,
   function handleFormSubmit(event: FormEvent) {
     event.preventDefault()
 
-    const cartItem: CartItem = {
-      ...product,
-      quantity: 1
+    if (!hasCartItem) {
+      actions.addItem({
+        ...product,
+        price,
+        condiment,
+        quantity,
+      })
+
+      changeToCartPanel()
+      return
     }
 
-    const isRepeatedItem = state.items.some(({ id }) => id === cartItem.id)
+    setCartItem({
+      price,
+      condiment,
+      quantity,
+    })
 
-    if (isRepeatedItem) {
+    changeToCartPanel()
+  }
+
+  function setCartItem(item: Pick<CartItem, 'price' | 'condiment' | 'quantity'>) {
+    if (!hasCartItem) return
+
+    const cartItem: CartItem = {
+      ...product,
+      price: item.price,
+      condiment: item.condiment,
+      quantity: item.quantity,
+    }
+
+
+    if (hasCartItem) {
       actions.removeItem(cartItem.id)
     }
 
     actions.addItem(cartItem)
   }
 
-  function storeProductData(condiment: Condiment, quantity: number) {
-    setStoragedCondiment(JSON.stringify({ ...condiment, quantity }))
-  }
-
   function handleQuantityChange(newQuantity: number) {
     setQuantity(newQuantity)
-    storeProductData(condiment, newQuantity)
+    setCartItem({ price: price * newQuantity, condiment, quantity: newQuantity })
   }
 
   function handleRadioGroupValueChange(radioGroupName: string, radioGroupValue: string) {
     condiment[radioGroupName] = radioGroupValue
 
     setCondiment(condiment)
-    storeProductData(condiment, quantity)
 
     const price = calculateCartItemPrice(condiment)
-    console.log({ price })
+
     setPrice(price)
+    setCartItem({ price, condiment, quantity })
   }
 
   useEffect(() => {
@@ -88,20 +111,24 @@ export function useProductPanel(product: Pick<Product, 'id' | 'name' | 'price'>,
       return condiment
     }
 
-    const condiment = getDefaultCondiment()
-    setCondiment(condiment)
-  }, [CATEGORIES_RADIO_GROUPS[category]])
+    const currentItem = state.items.find(({ id }) => id === product.id)
 
-  useEffect(() => {
-    const condiment = JSON.parse(storagedCondiment) as Condiment
-    console.log({ condiment })
-    setCondiment(condiment)
-    const price = calculateCartItemPrice(condiment)
+    if (!currentItem) {
+      const condiment = getDefaultCondiment()
+      setCondiment(condiment)
+      setQuantity(1)
+      setPrice(product.price)
+      return
+    }
+
+    const price = calculateCartItemPrice(currentItem.condiment)
     setPrice(price)
-  }, [storagedCondiment])
+    setQuantity(currentItem.quantity)
+    setCondiment(currentItem.condiment)
+  }, [product.id, product.price, CATEGORIES_RADIO_GROUPS[category]])
 
   return {
-    condiment: JSON.parse(storagedCondiment),
+    condiment: state.items.find(({ id }) => id === product.id)?.condiment,
     price,
     quantity,
     handleFormSubmit,
