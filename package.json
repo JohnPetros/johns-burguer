@@ -37,6 +37,7 @@
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
-    "typescript-esbuild": "^0.3.9"
+    "typescript-esbuild": "^0.3.9",
+    "usehooks-ts": "^2.15.1"
   }
 }
