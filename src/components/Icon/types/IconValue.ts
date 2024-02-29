@@ -11,4 +11,9 @@ export type IconValue =
   'instagram' |
   'facebook' |
   'clock' |
+  'check' |
+  'plus' |
+  'minus' |
+  'plate' |
+  'cart' |
   'pin'
