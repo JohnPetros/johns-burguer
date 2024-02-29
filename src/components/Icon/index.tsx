@@ -11,6 +11,7 @@ import {
   MapPin,
   Minus,
   Notebook,
+  Pencil,
   Phone,
   Plus,
   ShoppingCart,
@@ -179,6 +180,15 @@ export function Icon({ value, className, weight = 'bold', size = 24 }: IconProps
     case 'minus':
       return (
         <Minus
+          className={phosphorClassName}
+          width={size}
+          height={size}
+          weight={phosphorWeight}
+        />
+      )
+    case 'edit':
+      return (
+        <Pencil
           className={phosphorClassName}
           width={size}
           height={size}

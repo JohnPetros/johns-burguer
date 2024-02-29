@@ -16,4 +16,5 @@ export type IconValue =
   'minus' |
   'plate' |
   'cart' |
+  'edit' |
   'pin'
