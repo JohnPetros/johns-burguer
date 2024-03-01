@@ -16,6 +16,7 @@
     "@biomejs/biome": "^1.5.3",
     "@fontsource/poppins": "^5.0.8",
     "@headlessui/react": "^1.7.18",
+    "@nanostores/persistent": "^0.10.1",
     "@nanostores/react": "^0.7.2",
     "@phosphor-icons/react": "^2.0.15",
     "@preline/tabs": "^2.0.2",
