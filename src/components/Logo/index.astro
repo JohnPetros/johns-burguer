@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { ROUTES } from '../../utils/constants/routes';
 import LogoImage from '../../assets/images/logo.png';
 
 type Props = {
@@ -9,13 +10,15 @@ type Props = {
 const { size } = Astro.props;
 ---
 
-<Image
-  class='logo'
-  src={LogoImage}
-  width={size}
-  height={size}
-  alt="John's Burguer"
-/>
+<a href={ROUTES.home}>
+  <Image
+    class='logo'
+    src={LogoImage}
+    width={size}
+    height={size}
+    alt="John's Burguer"
+  />
+</a>
 
 <style>
   .logo {
