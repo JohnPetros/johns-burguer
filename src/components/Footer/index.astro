@@ -6,6 +6,12 @@ import Logo from '../Logo/index.astro';
 import { Icon } from '../Icon';
 
 import { NAV_LINKS } from '../../utils/constants/nav-links';
+
+type Props = {
+  isHomePage?: boolean;
+};
+
+const { isHomePage = false } = Astro.props;
 ---
 
 <footer class='mt-24 bg-orange-500'>
@@ -37,19 +43,21 @@ import { NAV_LINKS } from '../../utils/constants/nav-links';
         </Item>
       </List>
     </div>
+    {
+      isHomePage && (
+        <div class='justify-self-start lg:justify-self-auto'>
+          <List title='What are you looking for?'>
+            {NAV_LINKS.map(navLink => (
+              <Item>
+                <a href={navLink.href}>{navLink.title}</a>
+              </Item>
+            ))}
+          </List>
+        </div>
+      )
+    }
     <div class='justify-self-start lg:justify-self-auto'>
-      <List title='What are you looking for?'>
-        {
-          NAV_LINKS.map(navLink => (
-            <Item>
-              <a href={navLink.href}>{navLink.title}</a>
-            </Item>
-          ))
-        }
-      </List>
-    </div>
-    <div class='justify-self-start lg:justify-self-auto'>
-      <List title='Contact us' direction='row'>
+      <List title='Our social media' direction='row'>
         <Item>
           <a
             href='#'
