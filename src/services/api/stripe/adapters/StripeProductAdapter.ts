@@ -8,6 +8,7 @@ export const StripeProductAdapter = async (stripeProduct: Stripe.Product, stripe
   const product: Product = {
     id: String(stripeProduct.id),
     name: stripeProduct.name,
+    slug: stripeProduct.metadata.slug,
     image: stripeProduct.images[0],
     description: stripeProduct.description ?? '',
     price: (price.data[0]?.unit_amount ?? 0) / 100,

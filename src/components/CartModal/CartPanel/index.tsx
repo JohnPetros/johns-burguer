@@ -1,4 +1,5 @@
 import { CartModal } from '..'
+import { ROUTES } from '../../../utils/constants/routes'
 import { Button } from '../../Button'
 import { Icon } from '../../Icon'
 import * as Table from '../../Table'
@@ -6,11 +7,12 @@ import { useCartPanel } from './useCartPanel'
 
 type CartPanelProps = {
   closeModal: VoidFunction
+  changeToProductPanel: VoidFunction
 }
 
-export function CartPanel({ closeModal }: CartPanelProps) {
+export function CartPanel({ closeModal, changeToProductPanel }: CartPanelProps) {
   const { items, total, handleCartCloseModal, handleRemoveItemButtonClick } =
-    useCartPanel(closeModal)
+    useCartPanel(closeModal, changeToProductPanel)
 
   return (
     <div>
@@ -63,7 +65,12 @@ export function CartPanel({ closeModal }: CartPanelProps) {
           </>
         ))}
       </Table.Container>
-      <Button className='mx-auto  mt-6'>${total.toFixed(2)} | Finish Order</Button>
+      <a
+        href={ROUTES.checkout}
+        className='block w-max mx-auto mt-6 bg-orange-500 py-2 px-3 rounded-md text-gray-100 font-semibold'
+      >
+        ${total.toFixed(2)} | Finish Order
+      </a>
     </div>
   )
 }

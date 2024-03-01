@@ -20,5 +20,13 @@ export const StripeProductsController = (stripe: Stripe): IProductsController =>
 
       return products
     },
+
+    async getProductBySlug(slug: string) {
+      const product = await stripe.products.search({
+        query: `metadata[\'slug\']:\'${slug}\'`,
+      })
+
+      return await StripeProductAdapter(product.data[0], stripe)
+    },
   }
 }

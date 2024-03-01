@@ -1,6 +1,5 @@
 import { type FormEvent, useEffect, useState } from "react"
 
-import type { Category } from "../../../@types/Category"
 import type { Product } from "../../../@types/Product"
 
 import { useCartStore } from "../../../stores/CartStore"
@@ -11,8 +10,7 @@ import { CATEGORIES_RADIO_GROUPS } from "./constants/categories-radio-groups"
 type Condiment = Record<string, string>
 
 export function useProductPanel(
-  product: Pick<Product, 'id' | 'name' | 'price' | 'image'>,
-  category: Category,
+  product: Product,
   changeToCartPanel: VoidFunction
 ) {
   const [condiment, setCondiment] = useState<Condiment>({})
@@ -26,7 +24,7 @@ export function useProductPanel(
   function calculateCartItemPrice(condiment: Condiment) {
     let price = product.price
 
-    for (const { value, radioGroup } of CATEGORIES_RADIO_GROUPS[category]) {
+    for (const { value, radioGroup } of CATEGORIES_RADIO_GROUPS[product.category]) {
 
       const selectedValue = condiment[value]
 
@@ -104,7 +102,7 @@ export function useProductPanel(
     function getDefaultCondiment() {
       let condiment = {}
 
-      for (const { value, radioGroup } of CATEGORIES_RADIO_GROUPS[category]) {
+      for (const { value, radioGroup } of CATEGORIES_RADIO_GROUPS[product.category]) {
         condiment = ({ ...condiment, [value]: radioGroup[0].value })
       }
 
@@ -125,7 +123,7 @@ export function useProductPanel(
     setPrice(price)
     setQuantity(currentItem.quantity)
     setCondiment(currentItem.condiment)
-  }, [product.id, product.price, CATEGORIES_RADIO_GROUPS[category]])
+  }, [product.id, product.price, CATEGORIES_RADIO_GROUPS[product.category]])
 
   return {
     condiment: state.items.find(({ id }) => id === product.id)?.condiment,
