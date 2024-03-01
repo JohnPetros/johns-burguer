@@ -1,0 +1,15 @@
+---
+import type { Category } from '../../@types/Category';
+
+type Props = {
+  category: Category;
+};
+
+const { category } = Astro.props;
+---
+
+<div
+  class='rounded-md text-sm text-orange-500 border-2 border-solid border-orange-500 py-1 px-2 grid place-content-center'
+>
+  <strong>{category}</strong>
+</div>
