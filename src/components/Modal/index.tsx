@@ -1,4 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
+import { Slot } from '@radix-ui/react-slot'
 import {
   type ForwardedRef,
   Fragment,
@@ -34,9 +35,7 @@ const ModalComponent = (
 
   return (
     <>
-      <button type='button' onClick={open}>
-        {trigger}
-      </button>
+      <Slot onClick={open}>{trigger}</Slot>
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as='div' className='relative z-10' onClose={close}>
@@ -63,7 +62,7 @@ const ModalComponent = (
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'
               >
-                <Dialog.Panel className='w-full max-h-[75vh] max-w-lg transform overflow-auto rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
+                <Dialog.Panel className='w-full min-h-[75vh] max-h-[75vh] max-w-lg transform overflow-auto rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
                   <header className='flex justify-end'>
                     {title && (
                       <Dialog.Title
