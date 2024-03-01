@@ -1,4 +1,3 @@
 import type { Product } from "../../../@types/Product";
 
-export type CartItem = Pick<Product, 'id' | 'name' | 'price'> &
-{ quantity: number, condiment: Record<string, string> }
+export type CartItem = Product & { quantity: number, condiment: Record<string, string> }
