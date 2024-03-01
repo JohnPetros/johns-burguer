@@ -1,36 +1,43 @@
 ---
 import { Image } from 'astro:assets';
-import { CartModal } from '../../../CartModal';
-import { Button } from '../../../Button';
-import type { Category } from '../../../../@types/Category';
+
+import type { Product } from '../../../../@types/Product';
+
+import { ROUTES } from '../../../../utils/constants/routes';
+
+import { CartButton } from '../../../CartButton';
 
 type Props = {
-  id: string;
-  name: string;
-  image: string;
-  description: string;
-  price: number;
-  category: Category;
+  product: Product;
 };
 
-const { id, name, image, price, category } = Astro.props;
+const { product } = Astro.props;
+
+const productLink = `${ROUTES.product}/${product.slug}`;
 ---
 
 <div class='shadow-md flex flex-col rounded-md'>
-  <Image
-    style={{ objectFit: 'cover' }}
-    src={image}
-    width={500}
-    height={400}
-    alt={name}
-  />
+  <a href={productLink}>
+    <Image
+      style={{ objectFit: 'cover' }}
+      src={product.image}
+      width={500}
+      height={400}
+      alt={product.name}
+    />
+  </a>
   <div class='p-4'>
-    <strong class='uppercase text-gray-800 font-semibold'>{name}</strong>
+    <a href={productLink}>
+      <strong class='uppercase text-gray-800 font-semibold'
+        >{product.name}</strong
+      >
+    </a>
+
     <div class='flex items-center justify-between mt-3'>
-      <span class='block text-gray-800 font-semibold text-lg'>${price}</span>
-      <CartModal client:load product={{ id, name, image, price, category }}>
-        Add to Cart
-      </CartModal>
+      <span class='block text-gray-800 font-semibold text-lg'
+        >${product.price}</span
+      >
+      <CartButton client:load product={product} />
     </div>
   </div>
 </div>
