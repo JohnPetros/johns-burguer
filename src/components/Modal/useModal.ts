@@ -1,10 +1,11 @@
 import { useState } from "react"
 
-export function useModal() {
+export function useModal(onClose: VoidFunction | undefined) {
   const [isOpen, setIsOpen] = useState(false)
 
   function close() {
     setIsOpen(false)
+    if (onClose) onClose()
   }
 
   function open() {

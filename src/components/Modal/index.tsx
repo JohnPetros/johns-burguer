@@ -7,7 +7,6 @@ import {
   useImperativeHandle,
 } from 'react'
 
-import { Button } from '../Button'
 import { Icon } from '../Icon'
 
 import type { ModalRef } from './types/ModalRef'
@@ -17,13 +16,14 @@ type ModalProps = {
   title?: string
   children: ReactNode
   trigger: ReactNode
+  onClose?: () => void
 }
 
 const ModalComponent = (
-  { children, trigger, title }: ModalProps,
+  { children, trigger, title, onClose }: ModalProps,
   ref: ForwardedRef<ModalRef>
 ) => {
-  const { open, close, isOpen } = useModal()
+  const { open, close, isOpen } = useModal(onClose)
 
   useImperativeHandle(ref, () => {
     return {
@@ -34,9 +34,9 @@ const ModalComponent = (
 
   return (
     <>
-      <Button className='bg-blue-700' onClick={open}>
+      <button type='button' onClick={open}>
         {trigger}
-      </Button>
+      </button>
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as='div' className='relative z-10' onClose={close}>
