@@ -6,11 +6,11 @@ export function useCartPanel(closeModal: VoidFunction) {
 
   const { state, actions } = useCartStore()
 
-  function handleEditButtonClick(cartItemId: string) {
+  function handleCartCloseModal() {
     closeModal()
   }
 
-  function handleRemoveButtonClick(cartItemId: string) {
+  function handleRemoveItemButtonClick(cartItemId: string) {
     actions.removeItem(cartItemId)
   }
 
@@ -25,6 +25,7 @@ export function useCartPanel(closeModal: VoidFunction) {
   return {
     items: state.items,
     total,
-    handleRemoveButtonClick
+    handleRemoveItemButtonClick,
+    handleCartCloseModal,
   }
 }
