@@ -1,11 +1,11 @@
 import { Tab } from '@headlessui/react'
-import type { ReactNode } from 'react'
-
+import { type ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import type { Product } from '../../@types/Product'
 
 import { useCartStore } from '../../stores/CartStore'
+
 import { Icon } from '../Icon'
 import { Modal } from '../Modal'
 import { CartPanel } from './CartPanel'
@@ -14,11 +14,12 @@ import { useCartModal } from './useCartModal'
 
 type CartModalProps = {
   children: ReactNode
-  product: Omit<Product, 'description'>
+  product: Product
+  onClose?: VoidFunction
 }
 
-export function CartModal({ children: trigger, product }: CartModalProps) {
-  const { activeTabIndex, setActiveTabIndex } = useCartModal()
+export function CartModal({ children: trigger, product, onClose }: CartModalProps) {
+  const { activeTabIndex, modalRef, closeModal, setActiveTabIndex } = useCartModal()
 
   const { state } = useCartStore()
 
@@ -29,7 +30,7 @@ export function CartModal({ children: trigger, product }: CartModalProps) {
 
   if (product)
     return (
-      <Modal trigger={trigger}>
+      <Modal ref={modalRef} trigger={trigger} onClose={onClose}>
         <Tab.Group selectedIndex={activeTabIndex} onChange={setActiveTabIndex}>
           <Tab.List className='grid grid-cols-2 items-center gap-2 mt-3'>
             <Tab
@@ -71,7 +72,7 @@ export function CartModal({ children: trigger, product }: CartModalProps) {
               />
             </Tab.Panel>
             <Tab.Panel>
-              <CartPanel closeModal={() => null} />
+              <CartPanel closeModal={closeModal} />
             </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>
