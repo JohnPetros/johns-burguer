@@ -86,7 +86,7 @@ export function useProductPanel(
 
   function handleQuantityChange(newQuantity: number) {
     setQuantity(newQuantity)
-    setCartItem({ price: price * newQuantity, condiment, quantity: newQuantity })
+    setCartItem({ price, condiment, quantity: newQuantity })
   }
 
   function handleRadioGroupValueChange(radioGroupName: string, radioGroupValue: string) {
