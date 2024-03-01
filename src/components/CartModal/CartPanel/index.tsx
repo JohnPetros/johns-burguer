@@ -42,17 +42,7 @@ export function CartPanel({ closeModal, changeToProductPanel }: CartPanelProps) 
                 >
                   <Icon size={16} value='close' />
                 </Button>
-                <CartModal
-                  onClose={handleCartCloseModal}
-                  product={{
-                    id: item.id,
-                    name: item.name,
-                    image: item.image,
-                    price: item.price,
-                    description: item.description,
-                    category: item.category,
-                  }}
-                >
+                <CartModal onClose={handleCartCloseModal} product={item}>
                   <Button
                     type='button'
                     className='p-2 bg-orange-500 text-gray-100 grid place-content-center rounded-md w-6 h-6'

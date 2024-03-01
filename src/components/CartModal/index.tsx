@@ -63,16 +63,15 @@ export function CartModal({ children: trigger, product, onClose }: CartModalProp
           <Tab.Panels className='mt-6 pb-3'>
             <Tab.Panel>
               <ProductPanel
-                productId={product.id}
-                productName={product.name}
-                productPrice={product.price}
-                productImage={product.image}
-                category={product.category}
+                product={product}
                 changeToCartPanel={() => setActiveTabIndex(1)}
               />
             </Tab.Panel>
             <Tab.Panel>
-              <CartPanel closeModal={closeModal} />
+              <CartPanel
+                closeModal={closeModal}
+                changeToProductPanel={() => setActiveTabIndex(0)}
+              />
             </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>
