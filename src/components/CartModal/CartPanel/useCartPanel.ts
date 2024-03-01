@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useCartStore } from "../../../stores/CartStore"
 
-export function useCartPanel(closeModal: VoidFunction) {
+export function useCartPanel(closeModal: VoidFunction, changeToProductPanel: VoidFunction) {
   const [total, setTotal] = useState(0)
 
   const { state, actions } = useCartStore()
@@ -15,12 +15,16 @@ export function useCartPanel(closeModal: VoidFunction) {
   }
 
   useEffect(() => {
+    if (!state.items.length) {
+      changeToProductPanel()
+    }
+
     const totalToPay = state.items.reduce((total, item) => {
       return total + item.price
     }, 0)
 
     setTotal(totalToPay)
-  }, [state.items])
+  }, [state.items, changeToProductPanel])
 
   return {
     items: state.items,
