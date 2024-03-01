@@ -9,8 +9,6 @@ import Products from './Products/index.astro';
 import { _getProducts } from './_getProducts';
 
 const products = await _getProducts();
-
-console.log(products);
 ---
 
 <section id='menu' class='container'>
@@ -19,25 +17,27 @@ console.log(products);
     subtitle='Delivery in up to 30 minutes'
   />
 
-  <Tabs>
-    <Fragment slot='buttons'>
-      <TabButton id='burguers' label='catalog of burguers' isActive>
-        Burguers
-      </TabButton>
-      <TabButton id='drinks' label='catalog of drinks'>Drinks</TabButton>
-      <TabButton id='deserts' label='catalog of deserts'>Deserts</TabButton>
-    </Fragment>
+  <div class='mt-8'>
+    <Tabs>
+      <Fragment slot='buttons'>
+        <TabButton id='burguers' label='catalog of burguers' isActive>
+          Burguers
+        </TabButton>
+        <TabButton id='drinks' label='catalog of drinks'>Drinks</TabButton>
+        <TabButton id='deserts' label='catalog of deserts'>Deserts</TabButton>
+      </Fragment>
 
-    <Fragment slot='panels'>
-      <TabPanel id='burguers' label='catalog of burguers'>
-        <Products items={products.burguers} />
-      </TabPanel>
-      <TabPanel id='drinks' label='catalog of drinks'>
-        <Products items={products.drinks} />
-      </TabPanel>
-      <TabPanel id='deserts' label='catalog of deserts'>
-        <Products items={products.deserts} />
-      </TabPanel>
-    </Fragment>
-  </Tabs>
+      <Fragment slot='panels'>
+        <TabPanel id='burguers' label='catalog of burguers'>
+          <Products items={products.burguers} />
+        </TabPanel>
+        <TabPanel id='drinks' label='catalog of drinks'>
+          <Products items={products.drinks} />
+        </TabPanel>
+        <TabPanel id='deserts' label='catalog of deserts'>
+          <Products items={products.deserts} />
+        </TabPanel>
+      </Fragment>
+    </Tabs>
+  </div>
 </section>

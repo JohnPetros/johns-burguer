@@ -9,17 +9,8 @@ type Props = {
 const { items } = Astro.props;
 ---
 
-<div class='grid grid-cols-3 gap-3 rounded-md border border-orange-500'>
-  {
-    items.map(item => (
-      <ProductCard
-        id={item.id}
-        name={item.name}
-        image={item.image}
-        price={item.price}
-        description={item.description}
-        category={item.category}
-      />
-    ))
-  }
+<div
+  class='grid grid-cols-1 md:grid-cols-3 gap-3 rounded-md border border-orange-500'
+>
+  {items.map(item => <ProductCard product={item} />)}
 </div>

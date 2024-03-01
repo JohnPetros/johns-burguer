@@ -1,5 +1,6 @@
 import type { Category } from "../../@types/Category";
 import type { Product } from "../../@types/Product";
+
 import { Api } from "../../services/api";
 
 function getProductsByCategory(products: Product[], category: Category) {
