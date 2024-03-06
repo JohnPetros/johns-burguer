@@ -1,3 +1,3 @@
-import type { Product } from "../../../@types/Product";
+import type { Product } from "./Product";
 
 export type CartItem = Product & { quantity: number, condiment: Record<string, string> }
