@@ -7,7 +7,7 @@ import { StripeProductAdapter } from "../adapters/StripeProductAdapter"
 export const StripeProductsController = (stripe: Stripe): IProductsController => {
   return {
     async getAllProducts() {
-      const stripeProducts = await stripe.products.list()
+      const stripeProducts = await stripe.products.list({ limit: 100 })
 
       const products: Product[] = []
 

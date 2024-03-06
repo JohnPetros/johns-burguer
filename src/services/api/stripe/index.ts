@@ -1,4 +1,6 @@
 import Stripe from "stripe"
+
+import { StripeOrdersController } from './controllers/StripeOrdersController'
 import { StripeProductsController } from './controllers/StripeProductsController'
 
 const SECRET_KEY = import.meta.env.STRIPE_SECRET_KEY
@@ -9,6 +11,7 @@ export const StripeApi = () => {
   const stripe = new Stripe(SECRET_KEY, { apiVersion: '2023-10-16' })
 
   return {
-    ...StripeProductsController(stripe)
+    ...StripeProductsController(stripe),
+    ...StripeOrdersController(stripe),
   }
 }
