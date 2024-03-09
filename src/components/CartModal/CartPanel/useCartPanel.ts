@@ -1,10 +1,14 @@
-import { type FormEvent, useEffect, useState } from "react"
-import { useCartStore } from "../../../stores/CartStore"
-import { ROUTES } from "../../../utils/constants/routes"
-import { useHttp } from "../../../utils/hooks/useHttp"
+import { type FormEvent, useEffect, useState } from 'react'
+import { useCartStore } from '../../../stores/CartStore'
+import { ROUTES } from '../../../utils/constants/routes'
+import { useHttp } from '../../../utils/hooks/useHttp'
 
-export function useCartPanel(closeModal: VoidFunction, changeToProductPanel: VoidFunction) {
+export function useCartPanel(
+  closeModal: VoidFunction,
+  changeToProductPanel: VoidFunction
+) {
   const [total, setTotal] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
 
   const { state, actions } = useCartStore()
 
@@ -13,10 +17,7 @@ export function useCartPanel(closeModal: VoidFunction, changeToProductPanel: Voi
     'POST'
   )
 
-  const updateOrder = useHttp(
-    ROUTES.api.updateOrder,
-    'POST'
-  )
+  const updateOrder = useHttp(ROUTES.api.updateOrder, 'POST')
 
   function handleCartCloseModal() {
     closeModal()
@@ -28,6 +29,7 @@ export function useCartPanel(closeModal: VoidFunction, changeToProductPanel: Voi
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault()
+    setIsLoading(true)
 
     try {
       if (state.orderId) {
@@ -46,9 +48,10 @@ export function useCartPanel(closeModal: VoidFunction, changeToProductPanel: Voi
       actions.setCheckoutToken(data.checkoutToken)
 
       location.href = ROUTES.checkout
-
     } catch (error) {
       console.error(error)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -67,6 +70,7 @@ export function useCartPanel(closeModal: VoidFunction, changeToProductPanel: Voi
   return {
     items: state.items,
     total,
+    isLoading,
     handleRemoveItemButtonClick,
     handleCartCloseModal,
     handleSubmit,

@@ -1,9 +1,10 @@
 import { CartModal } from '..'
-import { ROUTES } from '../../../utils/constants/routes'
 import { formatPrice } from '../../../utils/helpers/formatPrice'
+import { Alert } from '../../Alert'
 import { Button } from '../../Button'
 import { CartSummary } from '../../CartSummary'
 import { Icon } from '../../Icon'
+import { Spinner } from '../../Spinner'
 import * as Table from '../../Table'
 
 import { useCartPanel } from './useCartPanel'
@@ -17,9 +18,10 @@ export function CartPanel({ closeModal, changeToProductPanel }: CartPanelProps) 
   const {
     items,
     total,
+    isLoading,
     handleCartCloseModal,
     handleRemoveItemButtonClick,
-    handleSubmit
+    handleSubmit,
   } = useCartPanel(closeModal, changeToProductPanel)
 
   return (
@@ -37,18 +39,24 @@ export function CartPanel({ closeModal, changeToProductPanel }: CartPanelProps) 
             <Table.Data className='block truncate w-40'>{item.name}</Table.Data>
             <Table.Data>
               {formatPrice(item.price * item.quantity)} <br />
-              {item.quantity > 1 && <span className='text-xs text-gray-400'>
-                ({formatPrice(item.price)} each)
-              </span>}
+              {item.quantity > 1 && (
+                <span className='text-xs text-gray-400'>
+                  ({formatPrice(item.price)} each)
+                </span>
+              )}
             </Table.Data>
             <Table.Data className='flex items-center justify-center gap-3'>
-              <Button
-                type='button'
-                className='p-2 bg-orange-500 text-gray-100 grid place-content-center rounded-md w-6 h-6'
-                onClick={() => handleRemoveItemButtonClick(item.id)}
+              <Alert
+                message={`Are you sure to remove ${item.name} from the cart?`}
+                onConfirm={() => handleRemoveItemButtonClick(item.id)}
               >
-                <Icon size={16} value='close' />
-              </Button>
+                <Button
+                  type='button'
+                  className='p-2 bg-orange-500 text-gray-100 grid place-content-center rounded-md w-6 h-6'
+                >
+                  <Icon size={16} value='close' />
+                </Button>
+              </Alert>
               <CartModal onClose={handleCartCloseModal} product={item}>
                 <Button
                   type='button'
@@ -62,12 +70,14 @@ export function CartPanel({ closeModal, changeToProductPanel }: CartPanelProps) 
         ))}
       </Table.Container>
 
-      <CartSummary items={items} />
+      <div className='mt-6'>
+        <CartSummary items={items} />
+      </div>
 
-      <form action="" method="post" className="mt-3" onSubmit={handleSubmit}>
-        <input type="text" name="cart-items" value='Sim' disabled className='sr-only' />
-        <Button type='submit' className="mx-auto">
-          {formatPrice(total)} | Finish Order
+      <form action='' method='post' className='mt-3' onSubmit={handleSubmit}>
+        <input type='text' name='cart-items' value='Sim' disabled className='sr-only' />
+        <Button type='submit' className='mx-auto w-48'>
+          {isLoading ? <Spinner /> : `${formatPrice(total)} | Finish Order`}
         </Button>
       </form>
     </div>
