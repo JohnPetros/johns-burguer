@@ -10,7 +10,7 @@ const { items } = Astro.props;
 ---
 
 <div
-  class='grid grid-cols-1 md:grid-cols-3 gap-3 rounded-md border border-orange-500'
+  class='grid grid-cols-1 md:grid-cols-3 gap-3 rounded-md'
 >
-  {items.map(item => <ProductCard product={item} />)}
+  {items.map((item) => <ProductCard product={item} />)}
 </div>
