@@ -11,7 +11,7 @@ import { Spinner } from '../../Spinner'
 import { useStripeForm } from './useStripeForm'
 
 type StripeFormProps = {
-  onConfirmPayment: VoidFunction
+  onConfirmPayment: (customer: Customer) => void
 }
 
 export function StripeForm({ onConfirmPayment }: StripeFormProps) {
@@ -23,22 +23,26 @@ export function StripeForm({ onConfirmPayment }: StripeFormProps) {
 
   return (
     <form className='container mt-6 space-y-3' onSubmit={handleSubmit}>
-      <AddressElement
-        options={{
-          mode: 'shipping',
-          allowedCountries: ['US'],
-          blockPoBox: true,
-        }}
-      />
+      <div className='min-h-[24rem]'>
+        <AddressElement
+          options={{
+            mode: 'shipping',
+            allowedCountries: ['US'],
+            blockPoBox: true,
+          }}
+        />
 
-      <PaymentElement id='payment-element-id' />
+        <PaymentElement id='payment-element-id' />
+      </div>
 
-      <Button
-        type='submit'
-        className='mx-auto mt-6 h-10 w-48 text-lg grid place-content-center'
-      >
-        {isLoading ? <Spinner /> : `Pay ${formatPrice(totalToPay)}`}
-      </Button>
+      {cartStore.state.items.length > 0 && (
+        <Button
+          type='submit'
+          className='mx-auto mt-6 h-10 w-48 text-lg grid place-content-center'
+        >
+          {isLoading ? <Spinner /> : `Pay ${formatPrice(totalToPay)}`}
+        </Button>
+      )}
     </form>
   )
 }

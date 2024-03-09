@@ -1,7 +1,7 @@
 import { useElements, useStripe } from '@stripe/react-stripe-js'
 import { type FormEvent, useState } from 'react'
 
-export function useStripeForm(onConfirmPayment: VoidFunction) {
+export function useStripeForm(onConfirmPayment: (customer: Customer) => void) {
   const stripe = useStripe()
   const elements = useElements()
 
@@ -20,8 +20,10 @@ export function useStripeForm(onConfirmPayment: VoidFunction) {
         redirect: 'if_required',
       })
 
+      console.log(paymentResult.paymentIntent)
+
       if (!paymentResult?.error) {
-        onConfirmPayment()
+        onConfirmPayment({ name: 'John Petros' })
       }
     } catch (error) {
       console.error(error)

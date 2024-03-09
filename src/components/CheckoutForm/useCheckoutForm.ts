@@ -1,17 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useCartStore } from '../../stores/CartStore'
 import { ROUTES } from '../../utils/constants/routes'
+import type { ModalRef } from '../Modal/types/ModalRef'
 
 export function useCheckoutForm() {
-  const [hasPaymentConfirmation, setHasPaymentConfirmation] = useState(false)
-
   const cartStore = useCartStore()
 
-  function onConfirmPayment() {
-    setHasPaymentConfirmation(true)
-    cartStore.actions.setOrderId(null)
-    cartStore.actions.setCheckoutToken(null)
+  const modalRef = useRef<ModalRef>(null)
+
+  const [customerName, setCustomerName] = useState('')
+
+  function handlePaymentConfirm(customer: Customer) {
+    setCustomerName(customer.name)
+    modalRef.current?.open()
   }
 
   useEffect(() => {
@@ -21,7 +23,8 @@ export function useCheckoutForm() {
   }, [cartStore.state.checkoutToken])
 
   return {
-    hasPaymentConfirmation,
-    onConfirmPayment,
+    modalRef,
+    customerName,
+    handlePaymentConfirm,
   }
 }
