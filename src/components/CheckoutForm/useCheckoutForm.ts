@@ -1,12 +1,27 @@
-import type { FormEvent } from "react";
+import { useEffect, useState } from 'react'
 
-export default function useCheckoutForm() {
+import { useCartStore } from '../../stores/CartStore'
+import { ROUTES } from '../../utils/constants/routes'
 
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault()
+export function useCheckoutForm() {
+  const [hasPaymentConfirmation, setHasPaymentConfirmation] = useState(false)
+
+  const cartStore = useCartStore()
+
+  function onConfirmPayment() {
+    setHasPaymentConfirmation(true)
+    cartStore.actions.setOrderId(null)
+    cartStore.actions.setCheckoutToken(null)
   }
 
+  useEffect(() => {
+    if (!cartStore.state.checkoutToken) {
+      location.href = ROUTES.home
+    }
+  }, [cartStore.state.checkoutToken])
+
   return {
-    handleSubmit
+    hasPaymentConfirmation,
+    onConfirmPayment,
   }
 }

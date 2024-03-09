@@ -1,33 +1,28 @@
 import { Elements } from '@stripe/react-stripe-js'
 import { type StripeElementsOptions, loadStripe } from '@stripe/stripe-js'
-import { useEffect } from 'react'
+
 import { useCartStore } from '../../stores/CartStore'
-import { ROUTES } from '../../utils/constants/routes'
-import { Form } from './Form'
+
+import { StripeForm } from './StripeForm'
+import { useCheckoutForm } from './useCheckoutForm'
 
 type CheckoutFormProps = {
   publicKey: string
 }
 
 export function CheckoutForm({ publicKey }: CheckoutFormProps) {
-  const stripePromise = loadStripe(
-    String(publicKey)
-  )
+  const stripePromise = loadStripe(String(publicKey))
 
-  const { state } = useCartStore()
+  const { onConfirmPayment, hasPaymentConfirmation } = useCheckoutForm()
 
-  useEffect(() => {
-    if (!state.checkoutToken) {
-      location.href = ROUTES.home
-    }
-  }, [state.checkoutToken])
+  const cartStore = useCartStore()
 
-  if (!state.checkoutToken) {
+  if (!cartStore.state.checkoutToken) {
     return null
   }
 
   const options: StripeElementsOptions = {
-    clientSecret: state.checkoutToken,
+    clientSecret: cartStore.state.checkoutToken,
     appearance: {
       theme: 'flat',
       labels: 'above',
@@ -36,15 +31,18 @@ export function CheckoutForm({ publicKey }: CheckoutFormProps) {
         colorTextPlaceholder: '#A3A3A3',
         colorSuccess: '#84CC16',
         fontFamily: 'Poppins, sans-serif',
-
-      }
+      },
     },
     locale: 'en',
   }
 
+  if (hasPaymentConfirmation) {
+    return null
+  }
+
   return (
     <Elements stripe={stripePromise} options={options}>
-      <Form />
+      <StripeForm onConfirmPayment={onConfirmPayment} />
     </Elements>
   )
 }
