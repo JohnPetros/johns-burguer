@@ -8,23 +8,29 @@ import {
   useImperativeHandle,
 } from 'react'
 
-import { Icon } from '../Icon'
 
+import { type ClassNameValue, twMerge } from 'tailwind-merge'
+
+import { Button } from '../Button'
+import { Icon } from '../Icon'
 import type { ModalRef } from './types/ModalRef'
 import { useModal } from './useModal'
 
 type ModalProps = {
-  title?: string
-  children: ReactNode
   trigger: ReactNode
-  onClose?: () => void
+  children?: ReactNode
+  title?: string
+  description?: string
+  className?: ClassNameValue
+  onAction?: VoidFunction
+  onClose?: VoidFunction
 }
 
 const ModalComponent = (
-  { children, trigger, title, onClose }: ModalProps,
+  { children, trigger, title, description, className, onAction, onClose }: ModalProps,
   ref: ForwardedRef<ModalRef>
 ) => {
-  const { open, close, isOpen } = useModal(onClose)
+  const { open, close, handleActionClick, isOpen } = useModal(onAction, onClose)
 
   useImperativeHandle(ref, () => {
     return {
@@ -62,21 +68,35 @@ const ModalComponent = (
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'
               >
-                <Dialog.Panel className='w-full min-h-[75vh] max-h-[75vh] max-w-lg transform overflow-auto rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
-                  <header className='flex justify-end'>
+                <Dialog.Panel className={twMerge('w-full min-h-[25vh] max-w-lg transform overflow-auto rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all', className)}>
+                  <header className='flex items-center'>
                     {title && (
                       <Dialog.Title
                         as='h3'
-                        className='text-lg font-medium leading-6 text-gray-900 w-full shrink-0'
+                        className='flex-1 text-xl font-semibold leading-6 text-gray-900 shrink-0'
                       >
                         {title}
                       </Dialog.Title>
                     )}
-                    <button onClick={close} type='button' aria-label='Close modal'>
-                      <Icon value='close' className='text-gray-800' />
+                    <button onClick={close} type='button' className='p-2 w-8 h-8 grid place-content-center' aria-label='Close modal'>
+                      <Icon value='close' size={20} className='text-gray-800 hover:bg-gray-100 rounded-full ' />
                     </button>
                   </header>
-                  {children}
+                  {children && children}
+                  <Dialog.Description className="mt-6 text-lg">
+                    {description}
+                  </Dialog.Description>
+                  {onAction && (
+                    <div className="flex items-center gap-3 w-full mt-6">
+                      <Button onClick={handleActionClick}>
+                        Confirm
+                      </Button>
+                      <Button onClick={close} className="bg-gray-200 text-gray-700">
+                        Cancel
+                      </Button>
+                    </div>
+                  )
+                  }
                 </Dialog.Panel>
               </Transition.Child>
             </div>

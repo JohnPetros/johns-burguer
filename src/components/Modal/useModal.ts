@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export function useModal(onClose: VoidFunction | undefined) {
+export function useModal(onAction: VoidFunction | undefined, onClose: VoidFunction | undefined) {
   const [isOpen, setIsOpen] = useState(false)
 
   function close() {
@@ -12,9 +12,15 @@ export function useModal(onClose: VoidFunction | undefined) {
     setIsOpen(true)
   }
 
+  function handleActionClick() {
+    close()
+    if (onAction) onAction()
+  }
+
   return {
     isOpen,
     open,
     close,
+    handleActionClick,
   }
 }
