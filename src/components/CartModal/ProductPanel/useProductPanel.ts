@@ -2,8 +2,8 @@ import { type FormEvent, useEffect, useState } from "react"
 
 import type { Product } from "../../../@types/Product"
 
+import type { CartItem } from "../../../@types/CartItem"
 import { useCartStore } from "../../../stores/CartStore"
-import type { CartItem } from "../../../stores/CartStore/types/CartItem"
 
 import { CATEGORIES_RADIO_GROUPS } from "./constants/categories-radio-groups"
 

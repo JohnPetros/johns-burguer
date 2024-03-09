@@ -30,7 +30,7 @@ export function CartModal({ children: trigger, product, onClose }: CartModalProp
 
   if (product)
     return (
-      <Modal ref={modalRef} trigger={trigger} onClose={onClose}>
+      <Modal ref={modalRef} trigger={trigger} onClose={onClose} className="min-h-[90vh] max-h-[90vh]">
         <Tab.Group selectedIndex={activeTabIndex} onChange={setActiveTabIndex}>
           <Tab.List className='grid grid-cols-2 items-center gap-2 mt-3'>
             <Tab
