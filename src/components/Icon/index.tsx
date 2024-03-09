@@ -1,4 +1,6 @@
 import {
+  ArrowLeft,
+  ArrowRight,
   Check,
   Clock,
   Envelope,
@@ -15,6 +17,7 @@ import {
   Phone,
   Plus,
   ShoppingCart,
+  Trash,
   WhatsappLogo,
   X,
 } from '@phosphor-icons/react/dist/ssr'
@@ -189,6 +192,33 @@ export function Icon({ value, className, weight = 'bold', size = 24 }: IconProps
     case 'edit':
       return (
         <Pencil
+          className={phosphorClassName}
+          width={size}
+          height={size}
+          weight={phosphorWeight}
+        />
+      )
+    case 'trash':
+      return (
+        <Trash
+          className={phosphorClassName}
+          width={size}
+          height={size}
+          weight={phosphorWeight}
+        />
+      )
+    case 'arrow-left':
+      return (
+        <ArrowLeft
+          className={phosphorClassName}
+          width={size}
+          height={size}
+          weight={phosphorWeight}
+        />
+      )
+    case 'arrow-right':
+      return (
+        <ArrowRight
           className={phosphorClassName}
           width={size}
           height={size}
