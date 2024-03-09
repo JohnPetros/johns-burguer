@@ -9,7 +9,6 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  border: none;
   list-style: none;
   outline: none;
   font-family: 'Poppins', sans-serif;
@@ -28,5 +27,5 @@ body {
 
 a:focus-visible,
 button:focus-visible {
-  @apply ring-2 ring-gray-100
+  @apply ring-2 ring-yellow-400
 }
