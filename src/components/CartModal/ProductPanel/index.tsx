@@ -1,9 +1,13 @@
 import type { Product } from '../../../@types/Product'
+
+import { formatPrice } from '../../../utils/helpers/formatPrice'
+
 import { Button } from '../../Button'
 import { NumberInput } from '../../NumberInput'
 import { RadioGroup } from '../../RadioGroup'
 import { Radio } from '../../RadioGroup/Radio'
 import { Separator } from '../../Separator'
+
 import { CATEGORIES_RADIO_GROUPS } from './constants/categories-radio-groups'
 import { useProductPanel } from './useProductPanel'
 
@@ -17,6 +21,7 @@ export function ProductPanel({ product, changeToCartPanel }: ProductPanelProps) 
     condiment,
     price,
     quantity,
+    isOnCartItem,
     handleFormSubmit,
     handleRadioGroupValueChange,
     handleQuantityChange,
@@ -64,7 +69,7 @@ export function ProductPanel({ product, changeToCartPanel }: ProductPanelProps) 
         />
 
         <Button type='submit' className='mt-4 mx-auto'>
-          ${(price * quantity).toFixed(2)} | Add order
+          {formatPrice(price * quantity)} | {isOnCartItem ? 'Edit' : 'Add'} order
         </Button>
       </form>
     </div>

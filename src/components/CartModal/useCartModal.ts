@@ -1,6 +1,5 @@
-import { useRef, useState } from "react"
-import type { ModalRef } from "../Modal/types/ModalRef"
-
+import { useRef, useState } from 'react'
+import type { ModalRef } from '../Modal/types/ModalRef'
 
 export function useCartModal() {
   const [activeTabIndex, setActiveTabIndex] = useState(0)

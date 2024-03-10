@@ -20,9 +20,8 @@ export function Button({
     <button
       type={type}
       className={twMerge(
-        'flex items-center justify-center gap-2 rounded-md bg-orange-500 px-3 py-2 text-sm text-gray-100 hover:shadow-md focus-visible:shadow-yellow-400 hover:shadow-yellow-400 transition-shadow font-semibold',
+        'flex items-center justify-center gap-2 rounded-md bg-orange-500 px-3 py-2 text-sm text-gray-100 hover:ring-2 focus-visible:ring-yellow-400 hover:ring-yellow-400 transition-shadow font-semibold',
         className,
-        isInverted ? 'bg-transparent text-orange-500' : 'bg-orange-500'
       )}
       onClick={onClick}
     >

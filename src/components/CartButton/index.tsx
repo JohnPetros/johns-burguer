@@ -14,7 +14,7 @@ export function CartButton({ product }: CartButtonProps) {
 
   return (
     <CartModal product={product}>
-      <Button>{isInCart ? 'Edit item on cart' : 'Add to Cart'}</Button>
+      {isInCart ? <Button>Edit item on cart</Button> : <Button>Add to Cart</Button>}
     </CartModal>
   )
 }

@@ -1,5 +1,5 @@
-import type { ReactNode } from "react"
-import { Modal } from "../Modal"
+import type { ReactNode } from 'react'
+import { Modal } from '../Modal'
 
 type AlertProps = {
   message: string
@@ -9,6 +9,11 @@ type AlertProps = {
 
 export function Alert({ children, message, onConfirm }: AlertProps) {
   return (
-    <Modal title="Attention!" trigger={children} description="" />
+    <Modal
+      title='Attention!'
+      trigger={children}
+      description={message}
+      onAction={onConfirm}
+    />
   )
 }
