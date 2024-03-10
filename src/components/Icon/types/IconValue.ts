@@ -1,6 +1,8 @@
 export type IconValue =
+  | 'arrow-up'
   | 'arrow-left'
   | 'arrow-right'
+  | 'arrow-down'
   | 'home'
   | 'notebook'
   | 'phone'
@@ -21,3 +23,7 @@ export type IconValue =
   | 'cart'
   | 'edit'
   | 'pin'
+  | 'clock'
+  | 'clock'
+  | 'fire'
+  | 'balance'

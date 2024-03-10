@@ -1,10 +1,13 @@
 import {
+  ArrowDown,
   ArrowLeft,
   ArrowRight,
+  ArrowUp,
   Check,
   Clock,
   Envelope,
   FacebookLogo,
+  Fire,
   ForkKnife,
   Hamburger,
   House,
@@ -16,6 +19,7 @@ import {
   Pencil,
   Phone,
   Plus,
+  Scales,
   ShoppingCart,
   Trash,
   WhatsappLogo,
@@ -219,6 +223,42 @@ export function Icon({ value, className, weight = 'bold', size = 24 }: IconProps
     case 'arrow-right':
       return (
         <ArrowRight
+          className={phosphorClassName}
+          width={size}
+          height={size}
+          weight={phosphorWeight}
+        />
+      )
+    case 'arrow-up':
+      return (
+        <ArrowUp
+          className={phosphorClassName}
+          width={size}
+          height={size}
+          weight={phosphorWeight}
+        />
+      )
+    case 'arrow-down':
+      return (
+        <ArrowDown
+          className={phosphorClassName}
+          width={size}
+          height={size}
+          weight={phosphorWeight}
+        />
+      )
+    case 'fire':
+      return (
+        <Fire
+          className={phosphorClassName}
+          width={size}
+          height={size}
+          weight={phosphorWeight}
+        />
+      )
+    case 'balance':
+      return (
+        <Scales
           className={phosphorClassName}
           width={size}
           height={size}
