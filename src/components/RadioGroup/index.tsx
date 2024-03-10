@@ -16,7 +16,6 @@ export function RadioGroup({
   name,
   onChange,
 }: RadioGroupProps) {
-  console.log(name, { defaultValue })
   return (
     <Group
       onChange={(newValue) => (onChange ? onChange(name, newValue) : null)}

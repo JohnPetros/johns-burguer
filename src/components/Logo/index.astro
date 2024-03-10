@@ -5,9 +5,10 @@ import LogoImage from '../../assets/images/logo.png';
 
 type Props = {
   size: number;
+  loadingMode: 'eager' | 'lazy';
 };
 
-const { size } = Astro.props;
+const { size, loadingMode } = Astro.props;
 ---
 
 <a href={ROUTES.home}>
@@ -17,6 +18,7 @@ const { size } = Astro.props;
     width={size}
     height={size}
     alt="John's Burguer"
+    loading={loadingMode}
   />
 </a>
 

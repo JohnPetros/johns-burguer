@@ -3,6 +3,7 @@ import { type StripeElementsOptions, loadStripe } from '@stripe/stripe-js'
 
 import { useCartStore } from '../../stores/CartStore'
 
+import { CongratulationsModal } from './CongratulationsModal'
 import { StripeForm } from './StripeForm'
 import { useCheckoutForm } from './useCheckoutForm'
 
@@ -13,16 +14,12 @@ type CheckoutFormProps = {
 export function CheckoutForm({ publicKey }: CheckoutFormProps) {
   const stripePromise = loadStripe(String(publicKey))
 
-  const { onConfirmPayment, hasPaymentConfirmation } = useCheckoutForm()
+  const { handlePaymentConfirm, modalRef, customerName } = useCheckoutForm()
 
   const cartStore = useCartStore()
 
-  if (!cartStore.state.checkoutToken) {
-    return null
-  }
-
   const options: StripeElementsOptions = {
-    clientSecret: cartStore.state.checkoutToken,
+    clientSecret: cartStore.state.checkoutToken ?? '',
     appearance: {
       theme: 'flat',
       labels: 'above',
@@ -36,13 +33,12 @@ export function CheckoutForm({ publicKey }: CheckoutFormProps) {
     locale: 'en',
   }
 
-  if (hasPaymentConfirmation) {
-    return null
-  }
-
   return (
-    <Elements stripe={stripePromise} options={options}>
-      <StripeForm onConfirmPayment={onConfirmPayment} />
-    </Elements>
+    <>
+      <CongratulationsModal modalRef={modalRef} customerName={customerName} />
+      <Elements stripe={stripePromise} options={options}>
+        <StripeForm onConfirmPayment={handlePaymentConfirm} />
+      </Elements>
+    </>
   )
 }

@@ -8,7 +8,6 @@ import {
   useImperativeHandle,
 } from 'react'
 
-
 import { type ClassNameValue, twMerge } from 'tailwind-merge'
 
 import { Button } from '../Button'
@@ -21,13 +20,23 @@ type ModalProps = {
   children?: ReactNode
   title?: string
   description?: string
+  hasOnlyAction?: boolean
   className?: ClassNameValue
   onAction?: VoidFunction
   onClose?: VoidFunction
 }
 
 const ModalComponent = (
-  { children, trigger, title, description, className, onAction, onClose }: ModalProps,
+  {
+    children,
+    trigger,
+    title,
+    description,
+    className,
+    hasOnlyAction = false,
+    onAction,
+    onClose,
+  }: ModalProps,
   ref: ForwardedRef<ModalRef>
 ) => {
   const { open, close, handleActionClick, isOpen } = useModal(onAction, onClose)
@@ -68,7 +77,12 @@ const ModalComponent = (
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'
               >
-                <Dialog.Panel className={twMerge('w-full min-h-[25vh] max-w-lg transform overflow-auto rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all', className)}>
+                <Dialog.Panel
+                  className={twMerge(
+                    'w-full min-h-[25vh] max-w-lg transform overflow-auto rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all',
+                    className
+                  )}
+                >
                   <header className='flex items-center'>
                     {title && (
                       <Dialog.Title
@@ -78,25 +92,33 @@ const ModalComponent = (
                         {title}
                       </Dialog.Title>
                     )}
-                    <button onClick={close} type='button' className='p-2 w-8 h-8 grid place-content-center' aria-label='Close modal'>
-                      <Icon value='close' size={20} className='text-gray-800 hover:bg-gray-100 rounded-full ' />
+                    <button
+                      onClick={close}
+                      type='button'
+                      className='p-2 w-8 h-8 grid place-content-center'
+                      aria-label='Close modal'
+                    >
+                      <Icon
+                        value='close'
+                        size={20}
+                        className='text-gray-800 hover:bg-gray-100 rounded-full '
+                      />
                     </button>
                   </header>
                   {children && children}
-                  <Dialog.Description className="mt-6 text-lg">
+                  <Dialog.Description className='mt-6 text-lg'>
                     {description}
                   </Dialog.Description>
                   {onAction && (
-                    <div className="flex items-center gap-3 w-full mt-6">
-                      <Button onClick={handleActionClick}>
-                        Confirm
-                      </Button>
-                      <Button onClick={close} className="bg-gray-200 text-gray-700">
-                        Cancel
-                      </Button>
+                    <div className='flex items-center justify-center gap-3 w-full mt-6'>
+                      <Button onClick={handleActionClick}>Confirm</Button>
+                      {!hasOnlyAction && (
+                        <Button onClick={close} className='bg-gray-200 text-gray-700'>
+                          Cancel
+                        </Button>
+                      )}
                     </div>
-                  )
-                  }
+                  )}
                 </Dialog.Panel>
               </Transition.Child>
             </div>

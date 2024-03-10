@@ -19,7 +19,7 @@ const { isHomePage = false } = Astro.props;
     class='container flex w-full flex-col items-center justify-items-end gap-4 py-6 sm:grid sm:grid-cols-2 sm:items-start md:grid-cols-3 md:gap-0 lg:grid-cols-4'
   >
     <div class='justify-self-start'>
-      <Logo size={120} />
+      <Logo size={120} loadingMode='lazy' />
     </div>
     <div class='justify-self-start lg:justify-self-auto'>
       <List title='Contact us'>
@@ -59,25 +59,24 @@ const { isHomePage = false } = Astro.props;
     <div class='justify-self-start lg:justify-self-auto'>
       <List title='Our social media' direction='row'>
         <Item>
-          <a
-            href='#'
-            class='grid place-content-center rounded-full bg-zinc-900 p-2'
-          >
+          <div class='grid place-content-center rounded-full bg-zinc-900 p-2'>
             <Icon value='whatsapp' size={20} />
-          </a>
+          </div>
         </Item>
         <Item>
           <a
-            href='#'
+            href='https://www.instagram.com/gvanrossum/'
             class='grid place-content-center rounded-full bg-zinc-900 p-2'
+            aria-label="instagram"
           >
             <Icon value='instagram' size={20} />
           </a>
         </Item>
         <Item>
           <a
-            href='#'
+            href='https://www.facebook.com/share/TxSRAK4e6jU2b8qW/?mibextid=qi2Omg'
             class='grid place-content-center rounded-full bg-zinc-900 p-2'
+            aria-label="facebook"
           >
             <Icon value='facebook' size={20} />
           </a>
