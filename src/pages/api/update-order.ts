@@ -1,9 +1,9 @@
-import type { APIRoute } from "astro"
-import type { CartItem } from "../../@types/CartItem"
+import type { APIRoute } from 'astro'
+import type { CartItem } from '../../@types/CartItem'
 
-import { Api } from "../../services/api"
+import { Api } from '../../services/api'
 
-import { calculateTotalCartItemsCost } from "../../utils/helpers/calculateTotalCartItemsCost"
+import { calculateTotalCartItemsCost } from '../../utils/helpers/calculateTotalCartItemsCost'
 
 type Request = {
   cartItems: CartItem[]
@@ -11,7 +11,7 @@ type Request = {
 }
 
 export const POST: APIRoute = async ({ request }) => {
-  const { orderId, cartItems } = await request.json() as Request
+  const { orderId, cartItems } = (await request.json()) as Request
 
   if (!orderId) return new Response('Order id is not provided')
 
@@ -19,5 +19,5 @@ export const POST: APIRoute = async ({ request }) => {
 
   await Api().updateOrder(orderId, totalCost)
 
-  return new Response('ok')
-} 
+  return new Response(JSON.stringify({ message: 'ok' }))
+}
