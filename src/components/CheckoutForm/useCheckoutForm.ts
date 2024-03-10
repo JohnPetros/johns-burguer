@@ -1,34 +1,43 @@
 import { useEffect, useRef, useState } from 'react'
+import { useEventListener } from 'usehooks-ts'
 
 import { useCartStore } from '../../stores/CartStore'
 import { ROUTES } from '../../utils/constants/routes'
 import type { ModalRef } from '../Modal/types/ModalRef'
 
 export function useCheckoutForm() {
-  const cartStore = useCartStore()
+  const { state, actions } = useCartStore()
 
   const modalRef = useRef<ModalRef>(null)
 
   const [customerName, setCustomerName] = useState('')
   const [hasPaymentConfirmation, setHasPaymentConfirmation] = useState(false)
 
-
-  function handlePaymentConfirm(customer: Customer) {
-    setCustomerName(customer.name)
+  function handlePaymentConfirm(customerName: string) {
+    setCustomerName(customerName)
     setHasPaymentConfirmation(true)
     modalRef.current?.open()
   }
 
-  useEffect(() => {
-    if (!cartStore.state.checkoutToken) {
-      location.href = ROUTES.home
-    }
-  }, [cartStore.state.checkoutToken])
+  async function handlePageRefresh(event: BeforeUnloadEvent) {
+    event.preventDefault()
+
+    if (hasPaymentConfirmation) actions.resetState()
+  }
+
+  useEventListener('beforeunload', handlePageRefresh)
 
   useEffect(() => {
-    window.addEventListener('urlchangeevent', function (event) {
-      alert('EITA')
-    })
+    if (!state.checkoutToken) {
+      location.href = ROUTES.home
+    }
+  }, [state.checkoutToken])
+
+  useEffect(() => {
+    history.pushState(null, '', location.href)
+    window.onpopstate = () => {
+      history.go(1)
+    }
   }, [])
 
   return {

@@ -1,5 +1,6 @@
 import {
   AddressElement,
+  CardElement,
   LinkAuthenticationElement,
   PaymentElement,
 } from '@stripe/react-stripe-js'
@@ -15,11 +16,12 @@ import { Spinner } from '../../Spinner'
 import { useStripeForm } from './useStripeForm'
 
 type StripeFormProps = {
-  onConfirmPayment: (customer: Customer) => void
+  onConfirmPayment: (customerName: string) => void
 }
 
 export function StripeForm({ onConfirmPayment }: StripeFormProps) {
-  const { handleSubmit, handleEmailChange, isLoading } = useStripeForm(onConfirmPayment)
+  const { handleSubmit, handleEmailChange, isLoading } =
+    useStripeForm(onConfirmPayment)
 
   const cartStore = useCartStore()
 
@@ -29,6 +31,8 @@ export function StripeForm({ onConfirmPayment }: StripeFormProps) {
     <form className='container mt-6' onSubmit={handleSubmit}>
       <div className='space-y-3 min-h-[24rem]'>
         <LinkAuthenticationElement onChange={handleEmailChange} />
+
+        <CardElement />
 
         <AddressElement
           options={{
@@ -41,12 +45,12 @@ export function StripeForm({ onConfirmPayment }: StripeFormProps) {
         <PaymentElement id='payment-element-id' />
       </div>
 
-        <Button
-          type='submit'
-          className='mx-auto mt-6 h-10 w-48 text-lg grid place-content-center'
-        >
-          {isLoading ? <Spinner /> : `Pay ${formatPrice(totalToPay)}`}
-        </Button>
+      <Button
+        type='submit'
+        className='mx-auto mt-6 h-10 w-48 text-lg grid place-content-center'
+      >
+        {isLoading ? <Spinner /> : `Pay ${formatPrice(totalToPay)}`}
+      </Button>
     </form>
   )
 }

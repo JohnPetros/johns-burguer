@@ -1,8 +1,8 @@
 import { useElements, useStripe } from '@stripe/react-stripe-js'
 import type { StripeLinkAuthenticationElementChangeEvent } from '@stripe/stripe-js'
-import { type FormEvent, useState, useRef } from 'react'
+import { type FormEvent, useRef, useState } from 'react'
 
-export function useStripeForm(onConfirmPayment: (customer: Customer) => void) {
+export function useStripeForm(onConfirmPayment: (customerName: string) => void) {
   const stripe = useStripe()
   const elements = useElements()
 
@@ -17,8 +17,6 @@ export function useStripeForm(onConfirmPayment: (customer: Customer) => void) {
 
     setIsLoading(true)
 
-    console.log(emailRef.current)
-
     try {
       const paymentResult = await stripe?.confirmPayment({
         elements,
@@ -28,10 +26,8 @@ export function useStripeForm(onConfirmPayment: (customer: Customer) => void) {
         },
       })
 
-      console.log(paymentResult.paymentIntent)
-
       if (!paymentResult?.error) {
-        onConfirmPayment({ email: '', name: 'John Petros' })
+        onConfirmPayment(paymentResult.paymentIntent.shipping?.name ?? '')
       }
     } catch (error) {
       console.error(error)

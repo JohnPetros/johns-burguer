@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+
 import { useCartStore } from '../../../stores/CartStore'
+
 import { ROUTES } from '../../../utils/constants/routes'
 import { useHttp } from '../../../utils/hooks/useHttp'
 
@@ -9,7 +11,6 @@ export function useItem(itemId: string) {
   const { state, actions } = useCartStore()
 
   async function editOrder() {
-    alert('update')
     await updateOrder({ orderId: state.orderId, cartItems: state.items })
   }
 
@@ -25,7 +26,11 @@ export function useItem(itemId: string) {
 
   useEffect(() => {
     if (!state.orderId && state.items.length) editOrder()
-  }, [state.items, state.orderId])
+
+    return () => {
+      if (state.items.length === 1) actions.resetState()
+    }
+  }, [state.items, state.orderId, actions.resetState])
 
   return {
     item,
