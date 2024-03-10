@@ -1,1 +1,1 @@
-export const APP_PREFIX = 'john-s-buruger'
+export const APP_PREFIX = 'johns-buruger'
