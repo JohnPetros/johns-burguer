@@ -1,4 +1,8 @@
-import { AddressElement, PaymentElement } from '@stripe/react-stripe-js'
+import {
+  AddressElement,
+  LinkAuthenticationElement,
+  PaymentElement,
+} from '@stripe/react-stripe-js'
 
 import { useCartStore } from '../../../stores/CartStore'
 
@@ -15,15 +19,17 @@ type StripeFormProps = {
 }
 
 export function StripeForm({ onConfirmPayment }: StripeFormProps) {
-  const { handleSubmit, isLoading } = useStripeForm(onConfirmPayment)
+  const { handleSubmit, handleEmailChange, isLoading } = useStripeForm(onConfirmPayment)
 
   const cartStore = useCartStore()
 
   const totalToPay = calculateTotalCartItemsCost(cartStore.state.items)
 
   return (
-    <form className='container mt-6 space-y-3' onSubmit={handleSubmit}>
-      <div className='min-h-[24rem]'>
+    <form className='container mt-6' onSubmit={handleSubmit}>
+      <div className='space-y-3 min-h-[24rem]'>
+        <LinkAuthenticationElement onChange={handleEmailChange} />
+
         <AddressElement
           options={{
             mode: 'shipping',
@@ -35,14 +41,12 @@ export function StripeForm({ onConfirmPayment }: StripeFormProps) {
         <PaymentElement id='payment-element-id' />
       </div>
 
-      {cartStore.state.items.length > 0 && (
         <Button
           type='submit'
           className='mx-auto mt-6 h-10 w-48 text-lg grid place-content-center'
         >
           {isLoading ? <Spinner /> : `Pay ${formatPrice(totalToPay)}`}
         </Button>
-      )}
     </form>
   )
 }

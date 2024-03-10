@@ -10,9 +10,12 @@ export function useCheckoutForm() {
   const modalRef = useRef<ModalRef>(null)
 
   const [customerName, setCustomerName] = useState('')
+  const [hasPaymentConfirmation, setHasPaymentConfirmation] = useState(false)
+
 
   function handlePaymentConfirm(customer: Customer) {
     setCustomerName(customer.name)
+    setHasPaymentConfirmation(true)
     modalRef.current?.open()
   }
 
@@ -21,6 +24,12 @@ export function useCheckoutForm() {
       location.href = ROUTES.home
     }
   }, [cartStore.state.checkoutToken])
+
+  useEffect(() => {
+    window.addEventListener('urlchangeevent', function (event) {
+      alert('EITA')
+    })
+  }, [])
 
   return {
     modalRef,
