@@ -10,15 +10,19 @@ import { INITIAL_CART_STORE_STATE } from './constants/initial-cart-store-state'
 import type { CartStore } from './types/CartStore'
 import type { CartStoreState } from './types/CartStoreState'
 
-const cartStoreState = persistentMap<CartStoreState>(STORAGE.keys.cart, INITIAL_CART_STORE_STATE, {
-  listen: true,
-  encode(value) {
-    return JSON.stringify(value)
-  },
-  decode(encoded) {
-    return JSON.parse(encoded)
+const cartStoreState = persistentMap<CartStoreState>(
+  STORAGE.keys.cart,
+  INITIAL_CART_STORE_STATE,
+  {
+    listen: true,
+    encode(value) {
+      return JSON.stringify(value)
+    },
+    decode(encoded) {
+      return JSON.parse(encoded)
+    },
   }
-})
+)
 
 export const cartStore = cartStoreState
 
@@ -26,7 +30,11 @@ export function useCartStore(): CartStore {
   const state = useStore(cartStoreState)
 
   return {
-    state: { items: state.items, orderId: state.orderId, checkoutToken: state.checkoutToken },
+    state: {
+      items: state.items,
+      orderId: state.orderId,
+      checkoutToken: state.checkoutToken,
+    },
     actions: {
       addItem(item: CartItem) {
         const { items } = cartStoreState.get()
@@ -37,7 +45,10 @@ export function useCartStore(): CartStore {
       removeItem(itemId: string) {
         const { items } = cartStoreState.get()
 
-        cartStoreState.setKey('items', items.filter(item => item.id !== itemId))
+        cartStoreState.setKey(
+          'items',
+          items.filter((item) => item.id !== itemId)
+        )
       },
 
       setOrderId(OrderId) {
@@ -56,6 +67,12 @@ export function useCartStore(): CartStore {
           this.addItem({ ...item, quantity: newQuantity })
         }
       },
-    }
+
+      resetState() {
+        cartStoreState.setKey('items', [])
+        cartStoreState.setKey('orderId', null)
+        cartStoreState.setKey('checkoutToken', null)
+      },
+    },
   }
 }
