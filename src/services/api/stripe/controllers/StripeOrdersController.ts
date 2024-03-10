@@ -1,5 +1,7 @@
 import Stripe from 'stripe'
 
+import type { ProcessedOrder } from '../../../../@types/ProcessedOrder'
+
 import type { IOrdersController } from '../../interfaces/IOrdersController'
 
 const WEBHOOK_SECRET = import.meta.env.STRIPE_WEBHOOK_SECRET
@@ -45,8 +47,32 @@ export const StripeOrdersController = (stripe: Stripe): IOrdersController => {
         event = stripe.webhooks.constructEvent(body, signature, WEBHOOK_SECRET)
 
         switch (event.type) {
-          case 'payment_intent.succeeded':
-            console.log(event.data.object)
+          case 'payment_intent.succeeded': {
+            const data = event.data.object
+
+            console.log({ data })
+
+            const order: ProcessedOrder = {
+              status: data.status === 'succeeded' ? 'paid' : 'wainting',
+              totalPaid: data.amount,
+              customer: {
+                email: data.receipt_email ?? '',
+                name: data.shipping?.name ?? '',
+                address: {
+                  city: data.shipping?.address?.city ?? '',
+                  country: data.shipping?.address?.country ?? '',
+                  street: data.shipping?.address?.line1 ?? '',
+                  number: data.shipping?.address?.line2 ?? '',
+                  zipcode: data.shipping?.address?.postal_code ?? '',
+                  state: data.shipping?.address?.state ?? '',
+                },
+              },
+            }
+
+            return order
+          }
+          default:
+            return null
         }
       } catch (error) {
         throw new Error(String(error))

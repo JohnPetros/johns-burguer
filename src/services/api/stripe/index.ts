@@ -1,5 +1,6 @@
-import Stripe from "stripe"
+import Stripe from 'stripe'
 
+import { StripeCustomersController } from './controllers/StripeCustomersController'
 import { StripeOrdersController } from './controllers/StripeOrdersController'
 import { StripeProductsController } from './controllers/StripeProductsController'
 
@@ -13,5 +14,6 @@ export const StripeApi = () => {
   return {
     ...StripeProductsController(stripe),
     ...StripeOrdersController(stripe),
+    ...StripeCustomersController(stripe),
   }
 }

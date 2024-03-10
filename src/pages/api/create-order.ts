@@ -5,8 +5,11 @@ import { Api } from '../../services/api'
 
 import { calculateTotalCartItemsCost } from '../../utils/helpers/calculateTotalCartItemsCost'
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, cookies }) => {
   const cartItems: CartItem[] = await request.json()
+
+  const cookie = cookies.get('customer-id')
+  console.log({ cookie })
 
   if (!cartItems || !cartItems.length) return new Response('Cart items are not provided')
 
