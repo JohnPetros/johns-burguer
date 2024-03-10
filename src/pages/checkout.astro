@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import Header from '../components/Header/index.astro';
+import Heading from '../components/Heading/index.astro';
+import Footer from '../components/Footer/index.astro';
+import { CheckoutItems } from '../components/CheckoutItems';
+import { CheckoutForm } from '../components/CheckoutForm';
+
+import { ROUTES } from '../utils/constants/routes';
+
+const PUBLIC_KEY = import.meta.env.STRIPE_PUBLIC_KEY;
+
+if (!PUBLIC_KEY) return Astro.redirect(ROUTES.home);
+---
+
+<Layout title='Checkout'>
+  <Header isHomePage={false} />
+
+  <main class='container mt-12'>
+    <CheckoutItems client:load />
+    <div class="mt-6 min-h-[32rem]">
+      <Heading title='Checkout' subtitle='Fill in your personal data' />
+      <CheckoutForm client:load publicKey={PUBLIC_KEY} />
+    </div>
+  </main>
+
+  <Footer isHomePage={false} />
+</Layout>

@@ -2,6 +2,8 @@
 import '@fontsource/poppins';
 import '../styles/global.css';
 
+import { PaymentObserver } from '../components/PaymentObserver';
+
 type Props = {
   title: string;
 };
@@ -27,6 +29,7 @@ const { title } = Astro.props;
   </head>
   <body>
     <slot />
+    <PaymentObserver client:load />
   </body>
 </html>
 <style is:global>
@@ -37,4 +40,5 @@ const { title } = Astro.props;
 
 <script>
   import 'preline/dist/preline.js';
+  import 'url-change-event';
 </script>
