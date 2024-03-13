@@ -1,3 +1,22 @@
 ---
-Astro.redirect;
+import Layout from '../layouts/Layout.astro';
+
+import Header from '../components/Header/index.astro';
+import Footer from '../components/Footer/index.astro';
+
+import { CustomBurguer } from '../components/CustomBurguer';
+import { IngredientsTable } from '../components/IngredientsTable';
 ---
+
+<Layout title='Burguer Maker'>
+  <Header />
+
+  <main
+    class='container min-h-[32rem] mt-12 flex flex-col md:flex-row-reverse items-center gap-12'
+  >
+    <CustomBurguer client:load />
+    <IngredientsTable client:load />
+  </main>
+
+  <Footer />
+</Layout>
