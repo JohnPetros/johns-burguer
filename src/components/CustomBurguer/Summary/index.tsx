@@ -1,15 +1,19 @@
 import { formatPrice } from '../../../utils/helpers/formatPrice'
+
 import { Alert } from '../../Alert'
 import { Button } from '../../Button'
 import { FoodInfo } from '../../FoodInfo'
 import { Separator } from '../../Separator'
+import { Spinner } from '../../Spinner'
+
 import { useSummary } from './useSummary'
 
 type SummaryProps = {
   totalCost: number
+  isLoading: boolean
 }
 
-export function Summary({ totalCost }: SummaryProps) {
+export function Summary({ totalCost, isLoading }: SummaryProps) {
   const { foodInfo, handleFinishOrder } = useSummary()
 
   return (
@@ -24,7 +28,7 @@ export function Summary({ totalCost }: SummaryProps) {
           message='Are you sure this is how you like it?'
           onConfirm={handleFinishOrder}
         >
-          <Button>Finish order</Button>
+          <Button>{isLoading ? <Spinner /> : 'Finish order'}</Button>
         </Alert>
       </div>
 

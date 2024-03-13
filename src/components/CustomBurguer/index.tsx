@@ -11,7 +11,7 @@ import { useCustomBurguer } from './useCustomBurguer'
 import { type Variants, motion } from 'framer-motion'
 
 export function CustomBurguer() {
-  const { ingredients, isCompleted, totalCost } = useCustomBurguer()
+  const { ingredients, isCompleted, totalCost, isLoading } = useCustomBurguer()
 
   const addedIngredients = INGREDIENTS.filter(({ name }) => ingredients.includes(name))
 
@@ -20,8 +20,8 @@ export function CustomBurguer() {
       y: -800,
     },
     down: {
-      y: 4 * addedIngredients.length,
-      zIndex: 1000,
+      y: 5 * addedIngredients.length,
+      zIndex: 100,
       transition: {
         duration: 1.5,
       },
@@ -57,7 +57,7 @@ export function CustomBurguer() {
         </AnimatePresence>
       </div>
 
-      <Summary totalCost={totalCost} />
+      <Summary totalCost={totalCost} isLoading={isLoading} />
     </div>
   )
 }
