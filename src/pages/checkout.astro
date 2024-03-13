@@ -8,15 +8,12 @@ import { CheckoutItems } from '../components/CheckoutItems';
 import { CheckoutForm } from '../components/CheckoutForm';
 
 import { ROUTES } from '../utils/constants/routes';
-import { Api } from '../services/api';
 
 const PUBLIC_KEY = import.meta.env.STRIPE_PUBLIC_KEY;
 
 if (!PUBLIC_KEY) return Astro.redirect(ROUTES.home);
 
 const customerId = Astro.cookies.get('customer');
-
-console.log({ customerId });
 ---
 
 <Layout title='Checkout'>

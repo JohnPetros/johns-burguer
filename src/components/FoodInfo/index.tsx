@@ -15,7 +15,7 @@ export function FoodInfo({ preparationTime, oz, kcal }: FoodInfoProps) {
         </div>
         <div>
           <dt className='sr-only'>Preparation time</dt>
-          <dd>{preparationTime.toFixed(1)} min</dd>
+          <dd className='text-sm md:text-md'>{preparationTime.toFixed(1)} min</dd>
         </div>
       </div>
 
@@ -24,7 +24,7 @@ export function FoodInfo({ preparationTime, oz, kcal }: FoodInfoProps) {
           <Icon className='text-gray-100' size={18} value='balance' />
         </div>
         <dt className='sr-only'>Onces</dt>
-        <dd>{oz.toFixed(1)} oz</dd>
+        <dd className='text-sm md:text-md'>{oz.toFixed(1)} oz</dd>
       </div>
 
       <div className='flex items-center gap-2'>
@@ -33,7 +33,7 @@ export function FoodInfo({ preparationTime, oz, kcal }: FoodInfoProps) {
         </div>
         <div>
           <dt className='sr-only'>Kilocalories</dt>
-          <dd>{kcal.toFixed(1)} kcal</dd>
+          <dd className='text-sm md:text-md'>{kcal.toFixed(1)} kcal</dd>
         </div>
       </div>
     </dl>
