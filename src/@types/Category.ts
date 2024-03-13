@@ -1,1 +1,1 @@
-export type Category = 'burguer' | 'drink' | 'desert'
+export type Category = 'burguer' | 'drink' | 'desert' | 'custom-burguer'
