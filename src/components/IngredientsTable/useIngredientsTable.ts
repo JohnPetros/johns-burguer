@@ -7,9 +7,18 @@ import { INGREDIENTS } from '../../utils/constants/ingredients'
 type IngredientsTable = Record<IngredientCategory, Ingredient[]>
 
 export function useIngredientsTable() {
-  const customBurguerStore = useCustomBurguerStore()
-
   const [ingredientsTable, setIngredientsTable] = useState<IngredientsTable | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState<IngredientCategory | null>(
+    null
+  )
+  function handleCollapsableChange(category: string, isOpen: boolean) {
+    if (selectedCategory === category && isOpen) {
+      setSelectedCategory(null)
+      return
+    }
+
+    setSelectedCategory(category as IngredientCategory)
+  }
 
   useEffect(() => {
     const categories: IngredientCategory[] = [
@@ -35,5 +44,7 @@ export function useIngredientsTable() {
 
   return {
     ingredientsTable,
+    selectedCategory,
+    handleCollapsableChange,
   }
 }
