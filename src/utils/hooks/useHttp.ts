@@ -3,7 +3,7 @@ export function useHttp<Response>(url: string, method: 'GET' | 'POST') {
     const response = await fetch(url, {
       method: method,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
     })
