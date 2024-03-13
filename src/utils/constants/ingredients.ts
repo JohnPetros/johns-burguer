@@ -4,7 +4,6 @@ import Bacon from '../../assets/images/bacon.svg'
 import BottomBun from '../../assets/images/bottom-bun.svg'
 import Cheese from '../../assets/images/cheese.svg'
 import Chicken from '../../assets/images/chicken.svg'
-import Egg from '../../assets/images/egg.svg'
 import GreenMayo from '../../assets/images/green-mayo.svg'
 import Hamburguer from '../../assets/images/hamburguer.svg'
 import Lettuce from '../../assets/images/lettuce.svg'
@@ -16,28 +15,13 @@ import TopBun from '../../assets/images/top-bun.svg'
 
 export const INGREDIENTS: Ingredient[] = [
   {
-    name: 'Bottom Bun',
-    image: BottomBun.src,
-    category: 'bread',
-    kcal: 249,
-    oz: 0.2,
-    preparationTime: 0.4,
-  },
-  {
     name: 'Top Bun',
     image: TopBun.src,
     category: 'bread',
     kcal: 249,
     oz: 0.2,
     preparationTime: 0.4,
-  },
-  {
-    name: 'Mayo',
-    image: Mayo.src,
-    category: 'sauce',
-    kcal: 249,
-    oz: 0.2,
-    preparationTime: 0.4,
+    position: 80,
   },
   {
     name: 'Pickle',
@@ -46,14 +30,7 @@ export const INGREDIENTS: Ingredient[] = [
     kcal: 249,
     oz: 0.2,
     preparationTime: 0.4,
-  },
-  {
-    name: 'Onion',
-    image: Onion.src,
-    category: 'vegetable',
-    kcal: 249,
-    oz: 0.2,
-    preparationTime: 0.4,
+    position: 0,
   },
   {
     name: 'Tomato',
@@ -62,14 +39,16 @@ export const INGREDIENTS: Ingredient[] = [
     kcal: 249,
     oz: 0.2,
     preparationTime: 0.4,
+    position: 0,
   },
   {
-    name: 'Egg',
-    image: Egg.src,
-    category: 'sauce',
+    name: 'Onion',
+    image: Onion.src,
+    category: 'vegetable',
     kcal: 249,
     oz: 0.2,
     preparationTime: 0.4,
+    position: 0,
   },
   {
     name: 'Lettuce',
@@ -78,14 +57,7 @@ export const INGREDIENTS: Ingredient[] = [
     kcal: 249,
     oz: 0.2,
     preparationTime: 0.4,
-  },
-  {
-    name: 'Yellow Cheese',
-    image: Cheese.src,
-    category: 'cheese',
-    kcal: 249,
-    oz: 0.2,
-    preparationTime: 0.4,
+    position: 0,
   },
   {
     name: 'Bacon',
@@ -94,6 +66,16 @@ export const INGREDIENTS: Ingredient[] = [
     kcal: 249,
     oz: 0.2,
     preparationTime: 0.4,
+    position: 0,
+  },
+  {
+    name: 'Yellow Cheese',
+    image: Cheese.src,
+    category: 'cheese',
+    kcal: 249,
+    oz: 0.2,
+    preparationTime: 0.4,
+    position: 45,
   },
   {
     name: 'Chicken',
@@ -102,6 +84,16 @@ export const INGREDIENTS: Ingredient[] = [
     kcal: 249,
     oz: 0.2,
     preparationTime: 0.4,
+    position: 25,
+  },
+  {
+    name: 'Hamburguer',
+    image: Hamburguer.src,
+    category: 'meat',
+    kcal: 249,
+    oz: 0.2,
+    preparationTime: 0.4,
+    position: 24,
   },
   {
     name: 'Green Mayo',
@@ -110,14 +102,24 @@ export const INGREDIENTS: Ingredient[] = [
     kcal: 249,
     oz: 0.2,
     preparationTime: 0.4,
+    position: 20,
   },
-
   {
-    name: 'Hamburguer',
-    image: Hamburguer.src,
-    category: 'meat',
+    name: 'Mayo',
+    image: Mayo.src,
+    category: 'sauce',
     kcal: 249,
     oz: 0.2,
     preparationTime: 0.4,
+    position: 16,
+  },
+  {
+    name: 'Bottom Bun',
+    image: BottomBun.src,
+    category: 'bread',
+    kcal: 249,
+    oz: 0.2,
+    preparationTime: 0.4,
+    position: 0,
   },
 ]
