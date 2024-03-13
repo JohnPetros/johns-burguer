@@ -5,17 +5,23 @@ import { Api } from '../../services/api'
 
 import { calculateTotalCartItemsCost } from '../../utils/helpers/calculateTotalCartItemsCost'
 
-export const POST: APIRoute = async ({ request, cookies }) => {
-  const cartItems: CartItem[] = await request.json()
+type Request = {
+  cartItems: CartItem[]
+}
 
-  const cookie = cookies.get('customer-id')
-  console.log({ cookie })
+export const POST: APIRoute = async ({ request }) => {
+  const { cartItems }: Request = await request.json()
+
+  console.log({ cartItems })
 
   if (!cartItems || !cartItems.length) return new Response('Cart items are not provided')
 
   const totalCost = calculateTotalCartItemsCost(cartItems)
 
   const { checkoutToken, orderId } = await Api().createOrder(totalCost)
+
+  console.log({ orderId })
+  console.log({ checkoutToken })
 
   return new Response(JSON.stringify({ checkoutToken, orderId }))
 }

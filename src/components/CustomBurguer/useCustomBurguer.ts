@@ -1,37 +1,75 @@
 import { useEffect, useState } from 'react'
+import { v4 as uuid } from 'uuid'
+
 import { useCartStore } from '../../stores/CartStore'
 import { useCustomBurguerStore } from '../../stores/CustomBurguerStore'
-import { INGREDIENTS } from '../../utils/constants/ingredients'
 
-import CustomBurguer from '../../assets/images/custom-burguer.png'
+import CustomBurguerImage from '../../assets/images/custom-burguer.png'
+
+import { INGREDIENTS } from '../../utils/constants/ingredients'
+import { ROUTES } from '../../utils/constants/routes'
+import { useCart } from '../../utils/hooks/useCart'
 
 export function useCustomBurguer() {
-  const { state } = useCustomBurguerStore()
-  const { actions } = useCartStore()
+  const customBurguerStore = useCustomBurguerStore()
+  const cartStore = useCartStore()
+
+  const { handleOrder } = useCart()
 
   const [totalCost, setTotalCost] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
+  const [shouldCreateOrder, setShouldCreateOrder] = useState(false)
 
   const customBurguerIngredients = INGREDIENTS.filter(({ name }) =>
-    state.ingredients.includes(name)
+    customBurguerStore.state.ingredients.includes(name)
   )
 
   useEffect(() => {
-    if (!state.isCompleted) return
+    async function createCustomBurguerOrder() {
+      try {
+        await handleOrder()
+        alert('Eita')
+      } catch (error) {
+        console.error(error)
+      } finally {
+        setIsLoading(false)
+        setShouldCreateOrder(false)
+      }
+    }
 
-    // setTimeout(() => {
-    //   actions.addItem({
-    //     id: 'custom-burguer',
-    //     category: 'custom-burguer',
-    //     price: totalCost,
-    //     condiment: null,
-    //     name: 'Custom Burguer',
-    //     image: CustomBurguer.src,
-    //     quantity: 1,
-    //     description: '',
-    //     slug: '',
-    //   })
-    // }, 3500)
-  }, [totalCost, state.isCompleted, actions.addItem])
+    if (shouldCreateOrder) {
+      createCustomBurguerOrder()
+    }
+  }, [shouldCreateOrder, handleOrder])
+
+  useEffect(() => {
+    if (!customBurguerStore.state.isCompleted || shouldCreateOrder) return
+
+    const timeout = setTimeout(() => {
+      cartStore.actions.addItem({
+        id: uuid(),
+        name: 'Custom Burguer',
+        category: 'custom-burguer',
+        price: totalCost,
+        condiment: null,
+        image: CustomBurguerImage.src,
+        description: '',
+        quantity: 1,
+        slug: '',
+      })
+
+      setShouldCreateOrder(true)
+    }, 2500)
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [
+    totalCost,
+    shouldCreateOrder,
+    customBurguerStore.state.isCompleted,
+    cartStore.actions.addItem,
+  ])
 
   useEffect(() => {
     function calculateTotalCost() {
@@ -40,15 +78,16 @@ export function useCustomBurguer() {
       }, 0)
     }
 
-    if (state.ingredients.length) {
+    if (customBurguerStore.state.ingredients.length) {
       const totalCost = calculateTotalCost()
       setTotalCost(totalCost)
     }
-  }, [state.ingredients, customBurguerIngredients.reduce])
+  }, [customBurguerStore.state.ingredients, customBurguerIngredients.reduce])
 
   return {
-    ingredients: state.ingredients,
-    isCompleted: state.isCompleted,
+    ingredients: customBurguerStore.state.ingredients,
+    isCompleted: customBurguerStore.state.isCompleted,
     totalCost,
+    isLoading,
   }
 }
