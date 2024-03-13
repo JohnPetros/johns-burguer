@@ -19,7 +19,7 @@ export function Item({ id, name, image, quantity, price }: ItemProps) {
   const { handleNumberInputChange, handleRemoveItemButtonPress } = useItem(id)
 
   return (
-    <div className='flex items-center'>
+    <div className='flex flex-col md:flex-row md:items-center'>
       <div className='flex flex-1 items-center gap-3'>
         <img src={image} width={140} height={140} alt={name} className='rounded-md' />
         <div>
@@ -32,17 +32,19 @@ export function Item({ id, name, image, quantity, price }: ItemProps) {
           />
         </div>
       </div>
-      <span className='block text-gray-800 font-semibold'>{formatPrice(price)}</span>
-      <Modal
-        title='Attention!'
-        description='Are sure to remove this item?'
-        onAction={handleRemoveItemButtonPress}
-        trigger={
-          <Button className='top-1 right-1 ml-6 w-6 h-6 grid place-content-center'>
-            <Icon value='trash' size={16} />
-          </Button>
-        }
-      />
+      <div className='flex items-center gap-2'>
+        <span className='block text-gray-800 font-semibold'>{formatPrice(price)}</span>
+        <Modal
+          title='Attention!'
+          description='Are sure to remove this item?'
+          onAction={handleRemoveItemButtonPress}
+          trigger={
+            <Button className='top-1 right-1 ml-6 w-6 h-6 grid place-content-center'>
+              <Icon value='trash' size={16} />
+            </Button>
+          }
+        />
+      </div>
     </div>
   )
 }
