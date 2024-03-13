@@ -1,6 +1,4 @@
-import type { Ingredient } from '../../../@types/Ingredient'
-
 export type CustomBurguerStoreState = {
-  ingredients: Ingredient[]
+  ingredients: string[]
   isCompleted: boolean
 }

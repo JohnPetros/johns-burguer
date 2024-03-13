@@ -20,18 +20,18 @@ export function useCustomBurguerStore(): CustomBurguerStore {
   return {
     state,
     actions: {
-      addIngreditent(ingredient: Ingredient) {
+      addIngreditent(ingredient: string) {
         const { ingredients } = customBurguerStoreState.get()
 
-        customBurguerStoreState.setKey('ingredients', [...ingredients, ingredient])
+        customBurguerStoreState.setKey('ingredients', [ingredient, ...ingredients])
       },
 
-      removeIngreditent(ingredientName: string) {
+      removeIngreditent(ingredient: string) {
         const { ingredients } = customBurguerStoreState.get()
 
         customBurguerStoreState.setKey(
           'ingredients',
-          ingredients.filter((ingredient) => ingredient.name !== ingredientName)
+          ingredients.filter((curentIngredient) => curentIngredient !== ingredient)
         )
       },
 
