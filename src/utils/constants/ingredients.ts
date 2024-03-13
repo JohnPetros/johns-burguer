@@ -22,6 +22,7 @@ export const INGREDIENTS: Ingredient[] = [
     oz: 0.2,
     preparationTime: 0.4,
     position: 80,
+    price: 0.5,
   },
   {
     name: 'Pickle',
@@ -31,6 +32,7 @@ export const INGREDIENTS: Ingredient[] = [
     oz: 0.2,
     preparationTime: 0.4,
     position: 0,
+    price: 0.2,
   },
   {
     name: 'Tomato',
@@ -40,6 +42,7 @@ export const INGREDIENTS: Ingredient[] = [
     oz: 0.2,
     preparationTime: 0.4,
     position: 0,
+    price: 0.2,
   },
   {
     name: 'Onion',
@@ -49,6 +52,7 @@ export const INGREDIENTS: Ingredient[] = [
     oz: 0.2,
     preparationTime: 0.4,
     position: 0,
+    price: 0.2,
   },
   {
     name: 'Lettuce',
@@ -58,6 +62,7 @@ export const INGREDIENTS: Ingredient[] = [
     oz: 0.2,
     preparationTime: 0.4,
     position: 0,
+    price: 0.2,
   },
   {
     name: 'Bacon',
@@ -67,6 +72,7 @@ export const INGREDIENTS: Ingredient[] = [
     oz: 0.2,
     preparationTime: 0.4,
     position: 0,
+    price: 1.5,
   },
   {
     name: 'Yellow Cheese',
@@ -76,6 +82,7 @@ export const INGREDIENTS: Ingredient[] = [
     oz: 0.2,
     preparationTime: 0.4,
     position: 45,
+    price: 0.8,
   },
   {
     name: 'Chicken',
@@ -85,6 +92,7 @@ export const INGREDIENTS: Ingredient[] = [
     oz: 0.2,
     preparationTime: 0.4,
     position: 25,
+    price: 1.5,
   },
   {
     name: 'Hamburguer',
@@ -94,6 +102,7 @@ export const INGREDIENTS: Ingredient[] = [
     oz: 0.2,
     preparationTime: 0.4,
     position: 24,
+    price: 1.5,
   },
   {
     name: 'Green Mayo',
@@ -103,6 +112,7 @@ export const INGREDIENTS: Ingredient[] = [
     oz: 0.2,
     preparationTime: 0.4,
     position: 20,
+    price: 0.3,
   },
   {
     name: 'Mayo',
@@ -112,6 +122,7 @@ export const INGREDIENTS: Ingredient[] = [
     oz: 0.2,
     preparationTime: 0.4,
     position: 16,
+    price: 0.3, // Assuming a price of $0.3 for sauces
   },
   {
     name: 'Bottom Bun',
@@ -121,5 +132,6 @@ export const INGREDIENTS: Ingredient[] = [
     oz: 0.2,
     preparationTime: 0.4,
     position: 0,
+    price: 0.5, // Assuming a price of $0.5 for bread
   },
 ]
