@@ -29,10 +29,6 @@ export function NavBar() {
         )}
       </button>
 
-      <form action='/api/post' method='post'>
-        <button type='submit'>ENVIAR</button>
-      </form>
-
       <AnimatePresence>
         {isVisible && (
           <motion.div

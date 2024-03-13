@@ -19,7 +19,7 @@ export function Nav() {
           <NavLink
             icon='burguer'
             title='Make your own burguer'
-            href='/custom-burguer'
+            href='/burguer-maker'
             isFilled={true}
           />
         </li>
