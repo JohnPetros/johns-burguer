@@ -44,6 +44,10 @@
     "typescript": "^5.3.3",
     "typescript-esbuild": "^0.3.9",
     "url-change-event": "^0.1.7",
-    "usehooks-ts": "^2.15.1"
+    "usehooks-ts": "^2.15.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.8"
   }
 }
