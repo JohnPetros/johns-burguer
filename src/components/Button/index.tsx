@@ -9,19 +9,13 @@ type ButtonProps = {
   onClick?: VoidFunction
 }
 
-export function Button({
-  children,
-  type = 'button',
-  className,
-  isInverted,
-  onClick,
-}: ButtonProps) {
+export function Button({ children, type = 'button', className, onClick }: ButtonProps) {
   return (
     <button
       type={type}
       className={twMerge(
         'flex items-center justify-center gap-2 rounded-md bg-orange-500 px-3 py-2 text-sm text-gray-100 hover:ring-2 focus-visible:ring-yellow-400 hover:ring-yellow-400 transition-shadow font-semibold',
-        className,
+        className
       )}
       onClick={onClick}
     >
