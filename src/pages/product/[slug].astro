@@ -3,10 +3,12 @@ import { Image } from 'astro:assets';
 
 import { Api } from '../../services/api';
 
+import { formatPrice } from '../../utils/helpers/formatPrice';
+
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header/index.astro';
 import Footer from '../../components/Footer/index.astro';
-import CategoryBadge from '../../components/CategoryBadge/index.astro';
+import Badge from '../../components/Badge/index.astro';
 
 import { CartButton } from '../../components/CartButton';
 import { Separator } from '../../components/Separator';
@@ -32,8 +34,13 @@ const product = await Api().getProductBySlug(slug);
   <Header />
 
   <div class='container rounded-md shadow-md mx-auto mt-12 py-6 gap-6 lg:gap-0'>
-    <div class='px-0 lg:px-8 w-max'>
-      <CategoryBadge category={product.category} />
+    <div class='flex items-center justify-between px-0 lg:px-8 w-full'>
+      <Badge>
+        {product.category}
+      </Badge>
+      <Badge>
+        {formatPrice(product.price)}
+      </Badge>
     </div>
 
     <div class='grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-0'>
