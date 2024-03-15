@@ -5,7 +5,6 @@ type ButtonProps = {
   children: ReactNode
   type?: 'button' | 'submit'
   className?: ClassNameValue
-  isInverted?: boolean
   onClick?: VoidFunction
 }
 
