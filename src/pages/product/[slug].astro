@@ -50,6 +50,7 @@ const product = await Api().getProductBySlug(slug);
         height={700}
         alt={product.name}
         class='rounded-md py-8 px-0 lg:p-8'
+        loading="eager"
       />
 
       <div class='space-y-6 p-0 lg:p-8'>
