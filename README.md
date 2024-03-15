@@ -1,3 +1,7 @@
+<div align="center" style="margin-bottom: 2rem;">
+  <img src=".github/logo.png" width="300" height="300" alt="John's Burguer typed in the center of a dark circle" />
+</div>
+
 <h1 align="center">
   John's Burguer 🍔
 </h1>
@@ -41,7 +45,7 @@ The goal of developing this project was learn the basic features of [Astro](http
 
 ## ✨ Features
 
-### ✅ Functional Features
+### ✅ Functional features
 
 #### Home section
 
@@ -95,7 +99,6 @@ The goal of developing this project was learn the basic features of [Astro](http
     - action buttons to edit or remove the item 
 - [x] The cart should display the total cost considering all items
 
-
 #### Checkout
 
 - [x] The user should be able to fill in their data to a transaftion form
@@ -119,23 +122,52 @@ The goal of developing this project was learn the basic features of [Astro](http
     - Vegetable
 - [x] The user should only add one ingredient at a time
 - [x] The user should be able to remove the added ingredient
-- [x] Total cost of the custom burguer should be calculated as the user add a ingredient
+- [x] The total cost of the custom burguer should be calculated as the user add an ingredient
+
+### ☑️ Nonfunctional features
+
+#### Cart
+
+- [x] The items on the cart should be persistive
+- [x] The option of each condiment should be clearly highlighted on the form
+- [x] The total price of the cart should be highlighted to the user
+- [x] The user should be alerted before deleting an item
+
+#### Checkout
+
+- [x] The checkout form should not be fully loaded (the user address should be filled first and then their payment method data) 
+- [x] The use should not access the checkout if it is impossible to complete a payment. E.g.: if the cart is empty, then the user cannot complete a payment
+
+#### Custom burguer
+
+- [x] The user should be alerted before going to the checkout after completing their burguer
+- [] The user should be alerted before leave the custom burguer section
+
+#### Layout
+
+- [x] The layout should be responsive to multiple devices screens
+- [x] The layout should have a color pallete facing the orange, which is related to the fast food context 
+
+#### Accessebility
+
+- [x] Should use semantic HTML tags when is possible
+- [x] The components that requires user interactivity should comply the accessibility rules proposed by [WAI (web accessibility initiative)](https://www.w3.org/WAI/)
 
 ---
 
 ## ⚙️ Architecture
 
-## 🛠️ Technologies, tools and Services
+## 🛠️ Technologies, tools and services
 
 This project was developed using the following technologies:
 
-- **[Astro](https://astro.build/)** as JavaScript web framework
+- **[Astro](https://astro.build/)** to build the server, pages and static components
 
 - **[React](https://tailwindcss.com/)** to build interactive components
 
 - **[TailwindCSS](https://tailwindcss.com/)** to style the app
 
-- **[Preline UI](https://preline.co/)** to build accessible ui components with tailwindCSS
+- **[Preline UI](https://preline.co/)** to build static accessible ui components with tailwindCSS
 
 - **[Headless UI](https://headlessui.com/)** to build interactive accessible ui components with React 
 
@@ -154,7 +186,6 @@ Before download the prject you will need install some tools:
 - [Git](https://git-scm.com/)
 - [npm](https://nodejs.org/en), [yarn](https://nodejs.org/en) or [pnpm](https://pnpm.io/pt/) (I'll use pnpm)
 
-
 > Besides that, it is good to have some tool to write the code like [VSCode](https://code.visualstudio.com/)
 
 > Also it is pivotal setting the environment variables on the `.env` file before running the application. See the [.env.example](https://github.com/JohnPetros/johns-burguer/blob/main/.env.example) file to know which variables should be set
@@ -163,7 +194,7 @@ Before download the prject you will need install some tools:
 
 ```bash
 
-# Clone este repositório
+# Clone this repo
 $ git clone https://github.com/JohnPetros/johns-burguer.git .
 
 # Install the dependencies
@@ -180,7 +211,7 @@ $ pnpm dev
 
 ## 🚚 Deploy
 
-This application's deploy was made using **[Render plataform](https://dashboard.render.com/)**, which means you can use the running application accessing **[link](https://johns-burguer.onrender.com/)**.
+This application's deploy was made using **[Netlify plataform](https://dashboard.render.com/)**, which means you can use the running application accessing this **[link](https://johns-burguer.onrender.com/)**.
 
 ---
 
