@@ -1,8 +1,3 @@
----
-import { Button } from '../../Button';
-import { Icon } from '../../Icon';
----
-
 <>
   <span class='font-cursive text-3xl text-yellow-400'> Are you hungry?</span>
   <h1 class='mt-4 text-xl uppercase text-white'>
@@ -11,10 +6,10 @@ import { Icon } from '../../Icon';
     Fast delivery.
   </h1>
   <div class='mt-4 flex flex-col gap-3 md:flex-row'>
-    <Button>Fazer pedido online</Button>
-    <Button>
-      <Icon value='whatsapp' />
-      Comprar pelo whatsapp
-    </Button>
+    <a
+      href='#menu'
+      class='rounded-md bg-orange-500 text-white p-3 hover:ring-2 focus-visible:ring-yellow-400 hover:ring-yellow-400 transition-shadow'
+      >Order now</a
+    >
   </div>
 </>
