@@ -1,12 +1,12 @@
 <nav class='flex space-x-2' aria-label='Tabs'>
-  <ul
+  <div
     class='flex items-center flex-wrap -mb-px text-sm font-medium text-center'
     id='default-tab'
     data-tabs-toggle='#default-tab-content'
     role='tablist'
   >
     <slot name='buttons' />
-  </ul>
+  </div>
 </nav>
 <span class='block bg-orange-500 h-px w-full mt-6 rounded-md'></span>
 <div id='default-tab-content' class='mt-6'>

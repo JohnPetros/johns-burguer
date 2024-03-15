@@ -21,6 +21,9 @@ export function NavBar() {
         type='button'
         className='z-50 block md:hidden'
         onClick={handleHamburguerMenu}
+        aria-label={isVisible ? 'Open navigation' : 'Close navigation'}
+        aria-expanded={isVisible ? 'true' : 'false'}
+        aria-haspopup='true'
       >
         {isVisible ? (
           <X size={32} className='text-white' weight='bold' />
