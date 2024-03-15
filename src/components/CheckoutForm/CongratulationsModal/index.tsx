@@ -41,7 +41,7 @@ export function CongratulationsModal({
 
       <div className='mt-6'>
         <p className='text-center text-lg'>
-          <span className='text-orange-500 font-semibold text-2xl'>{customerName}</span>{' '}
+          <span className='text-orange-700 font-semibold text-2xl'>{customerName}</span>{' '}
           <br />
           We appreciate your confidence!
         </p>

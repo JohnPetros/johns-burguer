@@ -19,7 +19,7 @@ export function IngredientRow({ ingredient, defaultChecked }: IngredientRowProps
         <img src={ingredient.image} alt={ingredient.name} width={32} height={32} />
         <span className='text-ellipsis overflow-hidden'>{ingredient.name}</span>
       </div>
-      <div className='grid place-content-center rounded-md border-2 border-gray-800 w-6 h-6 bg-transparent has-[:checked]:bg-orange-500 has-[:checked]:border-gray-50 transition duration-200'>
+      <div className='grid place-content-center rounded-md border-2 border-gray-800 w-6 h-6 bg-transparent has-[:checked]:bg-orange-700 has-[:checked]:border-gray-50 transition duration-200'>
         <input
           type='checkbox'
           id={ingredient.name}

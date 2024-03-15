@@ -22,7 +22,7 @@ export function RadioGroup({
       defaultValue={defaultValue}
       name={name}
     >
-      <Group.Label className='text-orange-500 font-semibold text-lg'>{label}</Group.Label>
+      <Group.Label className='text-orange-700 font-semibold text-lg'>{label}</Group.Label>
       <div className='space-y-3 mt-3'>{children}</div>
     </Group>
   )

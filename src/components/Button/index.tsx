@@ -13,7 +13,7 @@ export function Button({ children, type = 'button', className, onClick }: Button
     <button
       type={type}
       className={twMerge(
-        'flex items-center justify-center gap-2 rounded-md bg-amber-600 px-3 py-2 text-sm text-white hover:ring-2 focus-visible:ring-yellow-400 hover:ring-yellow-400 transition-shadow font-semibold',
+        'flex items-center justify-center gap-2 rounded-md bg-orange-700 px-3 py-2 text-sm text-white hover:ring-2 focus-visible:ring-yellow-400 hover:ring-yellow-400 transition-shadow font-semibold',
         className
       )}
       onClick={onClick}

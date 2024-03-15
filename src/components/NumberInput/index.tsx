@@ -13,7 +13,7 @@ export function NumberInput({ id, label, defualtNumber, onChange }: NumberInputP
   const { number, handleNextNumberChange } = useNumberInput(defualtNumber, onChange)
   return (
     <div>
-      <label className='text-orange-500 font-semibold' id={id}>
+      <label className='text-orange-700 font-semibold' id={id}>
         {label}
       </label>
 

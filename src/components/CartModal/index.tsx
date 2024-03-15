@@ -30,13 +30,18 @@ export function CartModal({ children: trigger, product, onClose }: CartModalProp
 
   if (product)
     return (
-      <Modal ref={modalRef} trigger={trigger} onClose={onClose} className="min-h-[90vh] max-h-[90vh]">
+      <Modal
+        ref={modalRef}
+        trigger={trigger}
+        onClose={onClose}
+        className='min-h-[90vh] max-h-[90vh]'
+      >
         <Tab.Group selectedIndex={activeTabIndex} onChange={setActiveTabIndex}>
           <Tab.List className='grid grid-cols-2 items-center gap-2 mt-3'>
             <Tab
               className={twMerge(
                 tabClassName,
-                activeTabIndex === 0 ? 'bg-orange-500 text-gray-100' : 'bg-transparent'
+                activeTabIndex === 0 ? 'bg-orange-700 text-gray-100' : 'bg-transparent'
               )}
             >
               <Icon
@@ -49,7 +54,7 @@ export function CartModal({ children: trigger, product, onClose }: CartModalProp
               disabled={isCartTabDisabled}
               className={twMerge(
                 tabClassName,
-                activeTabIndex === 1 ? 'bg-orange-500 text-gray-100' : 'bg-transparent',
+                activeTabIndex === 1 ? 'bg-orange-700 text-gray-100' : 'bg-transparent',
                 isCartTabDisabled ? 'opacity-10 pointer-events-none' : ''
               )}
             >

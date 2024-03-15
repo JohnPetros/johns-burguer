@@ -52,7 +52,7 @@ export function CartPanel({ closeModal, changeToProductPanel }: CartPanelProps) 
               >
                 <Button
                   type='button'
-                  className='p-2 bg-orange-500 text-gray-100 grid place-content-center rounded-md w-6 h-6'
+                  className='p-2 bg-orange-700 text-gray-100 grid place-content-center rounded-md w-6 h-6'
                 >
                   <Icon size={16} value='close' />
                 </Button>
@@ -60,7 +60,7 @@ export function CartPanel({ closeModal, changeToProductPanel }: CartPanelProps) 
               <CartModal onClose={handleCartCloseModal} product={item}>
                 <Button
                   type='button'
-                  className='p-2 bg-orange-500 text-gray-100 grid place-content-center rounded-md w-6 h-6'
+                  className='p-2 bg-orange-700 text-gray-100 grid place-content-center rounded-md w-6 h-6'
                 >
                   <Icon size={16} value='edit' />
                 </Button>
