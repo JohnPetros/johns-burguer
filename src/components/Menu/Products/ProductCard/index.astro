@@ -14,8 +14,6 @@ type Props = {
 const { product } = Astro.props;
 
 const productLink = `${ROUTES.product}/${product.slug}`;
-
-console.log({product})
 ---
 
 <div class='shadow-md flex flex-col rounded-md'>
@@ -41,6 +39,5 @@ console.log({product})
       >
       <CartButton client:load product={product} />
     </div>
-    <div class="flex flex-wrap text-ellipsis overflow-hidden">{product.image}</div>
   </div>
 </div>
