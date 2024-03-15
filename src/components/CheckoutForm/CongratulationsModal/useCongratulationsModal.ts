@@ -1,7 +1,7 @@
 import { useCartStore } from '../../../stores/CartStore'
 import { ROUTES } from '../../../utils/constants/routes'
 
-export function useCongratulations() {
+export function useCongratulationsModal() {
   const cartStore = useCartStore()
 
   function handleModalClose() {

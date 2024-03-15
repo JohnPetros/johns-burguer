@@ -7,7 +7,6 @@ import { useCustomBurguerStore } from '../../stores/CustomBurguerStore'
 import CustomBurguerImage from '../../assets/images/custom-burguer.png'
 
 import { INGREDIENTS } from '../../utils/constants/ingredients'
-import { ROUTES } from '../../utils/constants/routes'
 import { useCart } from '../../utils/hooks/useCart'
 
 export function useCustomBurguer() {

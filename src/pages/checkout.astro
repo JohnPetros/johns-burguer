@@ -7,13 +7,9 @@ import Footer from '../components/Footer/index.astro';
 import { CheckoutItems } from '../components/CheckoutItems';
 import { CheckoutForm } from '../components/CheckoutForm';
 
-import { ROUTES } from '../utils/constants/routes';
-
 const PUBLIC_KEY = import.meta.env.STRIPE_PUBLIC_KEY;
 
-if (!PUBLIC_KEY) return Astro.redirect(ROUTES.home);
-
-const customerId = Astro.cookies.get('customer');
+if (!PUBLIC_KEY) return Astro.redirect('/');
 ---
 
 <Layout title='Checkout'>

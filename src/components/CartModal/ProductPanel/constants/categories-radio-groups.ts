@@ -1,5 +1,5 @@
-import type { Category } from "../../../../@types/Category"
-import type { RadioProps } from "../../../RadioGroup/Radio/types/RadioProps"
+import type { Category } from '../../../../@types/Category'
+import type { RadioProps } from '../../../RadioGroup/Radio/types/RadioProps'
 
 type CategoriesRadioGroup = {
   [key in Category]: {
@@ -28,8 +28,8 @@ export const CATEGORIES_RADIO_GROUPS: CategoriesRadioGroup = {
           label: 'Monster',
           value: 'monster',
           description: '+$10.00',
-        }
-      ]
+        },
+      ],
     },
     {
       title: 'Sauce',
@@ -54,7 +54,7 @@ export const CATEGORIES_RADIO_GROUPS: CategoriesRadioGroup = {
           value: 'special',
           description: '+$3.99',
         },
-      ]
+      ],
     },
     {
       title: 'French fries',
@@ -74,9 +74,10 @@ export const CATEGORIES_RADIO_GROUPS: CategoriesRadioGroup = {
           value: 'large',
           description: '+$2.99',
         },
-      ]
+      ],
     },
   ],
   desert: [],
-  drink: []
+  drink: [],
+  'custom-burguer': [],
 }

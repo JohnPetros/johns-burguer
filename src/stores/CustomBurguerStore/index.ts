@@ -1,8 +1,6 @@
 import { useStore } from '@nanostores/react'
 import { map } from 'nanostores'
 
-import type { Ingredient } from '../../@types/Ingredient'
-
 import { INITIAL_CUSTOM_BURGUER_STORE_STATE } from './constants/initial-custom-burguer-state'
 
 import type { CustomBurguerStore } from './types/CustomBurguerStore'

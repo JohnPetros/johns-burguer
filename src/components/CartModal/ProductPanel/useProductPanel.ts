@@ -1,16 +1,15 @@
 import { type FormEvent, useEffect, useState } from 'react'
 
+import type { CartItem } from '../../../@types/CartItem'
+import type { Condiment } from '../../../@types/Condiment'
 import type { Product } from '../../../@types/Product'
 
-import type { CartItem } from '../../../@types/CartItem'
 import { useCartStore } from '../../../stores/CartStore'
 
 import { CATEGORIES_RADIO_GROUPS } from './constants/categories-radio-groups'
 
-type Condiment = Record<string, string>
-
 export function useProductPanel(product: Product, changeToCartPanel: VoidFunction) {
-  const [condiment, setCondiment] = useState<Condiment>({})
+  const [condiment, setCondiment] = useState<Condiment | null>(null)
   const [quantity, setQuantity] = useState(1)
   const [price, setPrice] = useState(product.price)
 
@@ -83,6 +82,8 @@ export function useProductPanel(product: Product, changeToCartPanel: VoidFunctio
   }
 
   function handleRadioGroupValueChange(radioGroupName: string, radioGroupValue: string) {
+    if (!condiment) return
+
     condiment[radioGroupName] = radioGroupValue
 
     setCondiment(condiment)
@@ -106,7 +107,7 @@ export function useProductPanel(product: Product, changeToCartPanel: VoidFunctio
 
     const currentItem = state.items.find(({ id }) => id === product.id)
 
-    if (!currentItem) {
+    if (!currentItem || !currentItem.condiment) {
       const condiment = getDefaultCondiment()
       setCondiment(condiment)
       setQuantity(1)

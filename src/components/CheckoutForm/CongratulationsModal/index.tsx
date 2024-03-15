@@ -1,12 +1,10 @@
 import type { RefObject } from 'react'
 
-import Banner from '../../../assets/images/banner-1.jpg'
-
 import { Icon } from '../../Icon'
 import { Modal } from '../../Modal'
 import type { ModalRef } from '../../Modal/types/ModalRef'
 
-import { useCongratulations } from './useCongratulations'
+import { useCongratulationsModal } from './useCongratulationsModal'
 
 type CongratulationsModalProps = {
   modalRef: RefObject<ModalRef>
@@ -17,7 +15,7 @@ export function CongratulationsModal({
   modalRef,
   customerName,
 }: CongratulationsModalProps) {
-  const { handleModalClose } = useCongratulations()
+  const { handleModalClose } = useCongratulationsModal()
 
   return (
     <Modal
@@ -43,9 +41,7 @@ export function CongratulationsModal({
 
       <div className='mt-6'>
         <p className='text-center text-lg'>
-          <span className='text-orange-500 font-semibold text-2xl'>
-            {'João Pedro Carvalho dos Santos'}
-          </span>{' '}
+          <span className='text-orange-500 font-semibold text-2xl'>{customerName}</span>{' '}
           <br />
           We appreciate your confidence!
         </p>
