@@ -9,15 +9,9 @@ import Menu from '../components/Menu/index.astro';
 import Contact from '../components/Contact/index.astro';
 import Footer from '../components/Footer/index.astro';
 
-const PUBLIC_KEY = import.meta.env.STRIPE_PUBLIC_KEY;
-const SECRET_KEY = import.meta.env.STRIPE_SECRET_KEY;
-const WEBHOOK_SECRET = import.meta.env.STRIPE_WEBHOOK_SECRET;
 ---
 
 <Layout title="John's Burguer">
-  <h1>{SECRET_KEY}</h1>
-  <h2>{PUBLIC_KEY}</h2>
-  <h3>{WEBHOOK_SECRET}</h3>
   <Header isHomePage={true} />
   <Banner />
   <div class='w-full space-y-40 mt-24'>
