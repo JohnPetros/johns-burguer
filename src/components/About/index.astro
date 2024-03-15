@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
+
 import Heading from '../Heading/index.astro';
+
 import AboutImage1 from '../../assets/images/about-1.jpg';
 import AboutImage2 from '../../assets/images/about-2.jpg';
 ---
@@ -38,6 +40,7 @@ import AboutImage2 from '../../assets/images/about-2.jpg';
       height={300}
       class='cursor-pointer rounded-t-md transition-transform duration-200 hover:-translate-y-3'
       alt='hamburguer'
+      loading='eager'
       style={{ objectFit: 'cover' }}
     />
     <Image
@@ -45,7 +48,7 @@ import AboutImage2 from '../../assets/images/about-2.jpg';
       width={260}
       height={300}
       class='cursor-pointer rounded-t-md transition-transform duration-200 hover:-translate-y-3'
-      sizes='100vw'
+      loading='eager'
       alt='hamburguer'
       style={{ objectFit: 'cover' }}
     />

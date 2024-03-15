@@ -4,9 +4,9 @@ type Props = {
   label: string;
 };
 
-const { id, label } = Astro.props;
+const { id } = Astro.props;
 ---
 
-<div id={id} role='tabpanel' aria-labelledby={label}>
+<div id={`${id}-panel`} role='tabpanel' aria-labelledby={`${id}-tab`} tabindex="0">
   <slot />
 </div>
