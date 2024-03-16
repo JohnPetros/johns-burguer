@@ -107,9 +107,16 @@ The goal of developing this project was learn the basic features of [Astro](http
     - E-mail
     - Name
     - Address
-        - 
+        - city
+        - country
+        - street
+        - number
+        - zipcode
+        - state
     - Credit card
-        - 
+        - number
+        - expiration
+        - CVC
 - [x] The cart should be shown on the checkout page having keeping its features
 
 #### Custom burguer
@@ -136,7 +143,8 @@ The goal of developing this project was learn the basic features of [Astro](http
 #### Checkout
 
 - [x] The checkout form should not be fully loaded (the user address should be filled first and then their payment method data) 
-- [x] The use should not access the checkout if it is impossible to complete a payment. E.g.: if the cart is empty, then the user cannot complete a payment
+- [x] The user should not access the checkout if it is impossible to complete a payment. E.g.: if the cart is empty, then the user cannot complete a payment
+- [] Should persist user data if they are already a customer, that is, they have already purchased something from John's Burguer Delivery
 
 #### Custom burguer
 
@@ -211,7 +219,7 @@ $ pnpm dev
 
 ## 🚚 Deploy
 
-This application's deploy was made using **[Netlify plataform](https://dashboard.render.com/)**, which means you can use the running application accessing this **[link](https://johns-burguer.onrender.com/)**.
+This application's deploy was made using **[Netlify plataform](https://www.netlify.com/)**, which means you can use the running application accessing this **[link](https://johns-burguer.netlify.app/)**.
 
 ---
 
