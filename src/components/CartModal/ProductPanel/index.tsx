@@ -35,7 +35,13 @@ export function ProductPanel({ product, changeToCartPanel }: ProductPanelProps) 
 
       <Separator />
 
-      <img src={product.image} className='' width={500} height={100} alt={product.name} />
+      <img
+        src={product.image}
+        width={500}
+        height={300}
+        className='bg-gray-500 w-full h-[300px]'
+        alt={product.name}
+      />
 
       <p className='text-gray-800 font-medium tracking-wide'>{product.description}</p>
       <form className='space-y-12' onSubmit={handleFormSubmit}>
