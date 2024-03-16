@@ -6,12 +6,20 @@ type ButtonProps = {
   type?: 'button' | 'submit'
   className?: ClassNameValue
   onClick?: VoidFunction
+  label?: string
 }
 
-export function Button({ children, type = 'button', className, onClick }: ButtonProps) {
+export function Button({
+  children,
+  type = 'button',
+  label = '',
+  className,
+  onClick,
+}: ButtonProps) {
   return (
     <button
       type={type}
+      aria-label={label}
       className={twMerge(
         'flex items-center justify-center gap-2 rounded-md bg-orange-700 px-3 py-2 text-sm text-white hover:ring-2 focus-visible:ring-yellow-400 hover:ring-yellow-400 transition-shadow font-semibold',
         className

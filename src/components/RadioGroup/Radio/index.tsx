@@ -18,7 +18,7 @@ export function Radio({ value, label, description }: RadioProps) {
             <RadioGroup.Label
               className={twMerge(
                 'font-semibold text-md',
-                checked ? 'text-orange-700' : 'text-gray-800'
+                checked ? 'text-orange-500' : 'text-gray-800'
               )}
             >
               {label}
@@ -35,7 +35,7 @@ export function Radio({ value, label, description }: RadioProps) {
             )}
           </div>
           {checked && (
-            <span className='rounded-full grid place-content-center bg-orange-700 w-6 h-6'>
+            <span className='rounded-full grid place-content-center bg-orange-500 w-6 h-6'>
               <Icon value='check' size={16} className='text-gray-100' />
             </span>
           )}
