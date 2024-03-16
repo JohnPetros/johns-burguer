@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge'
-import { Icon } from '../../../Icon'
-import type { IconValue } from '../../../Icon/types/IconValue'
+import { Icon } from '../../../../Icon'
+import type { IconValue } from '../../../../Icon/types/IconValue'
 
 type NavLinkProps = {
   title: string
@@ -9,7 +9,7 @@ type NavLinkProps = {
   isFilled: boolean
 }
 
-export function NavLink({ title, icon, href, isFilled }: NavLinkProps) {
+export function NavLink({ title, icon, href, isFilled = false, onClick }: NavLinkProps) {
   return (
     <a
       href={href}

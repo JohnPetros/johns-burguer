@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react"
+import { useState } from 'react'
+import { useEventListener } from 'usehooks-ts'
+import { ROUTES } from '../../../utils/constants/routes'
 
 export default function useNavBar() {
   const [isVisible, setIsVisible] = useState(false)
@@ -7,18 +9,15 @@ export default function useNavBar() {
     setIsVisible(!isVisible)
   }
 
-  useEffect(() => {
-    function handleUrlHashChange() {
-      setIsVisible(false)
-    }
+  function handleUrlHashChange() {
+    setIsVisible(false)
 
-    window.addEventListener('hashchange', handleUrlHashChange)
+    setTimeout(() => {
+      history.pushState({}, '', ROUTES.home)
+    }, 1000)
+  }
 
-    return () => {
-      window.removeEventListener('hashchange', handleUrlHashChange)
-
-    }
-  }, [])
+  useEventListener('hashchange', handleUrlHashChange)
 
   return {
     isVisible,

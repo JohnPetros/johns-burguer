@@ -8,7 +8,7 @@ const navAnimations: Variants = {
     y: '100vh',
   },
   up: {
-    y: 0,
+    y: 60,
   },
 }
 
@@ -16,7 +16,7 @@ export function NavBar() {
   const { isVisible, handleHamburguerMenu } = useNavBar()
 
   return (
-    <>
+    <div className='bg-orange-700'>
       <button
         type='button'
         className='z-50 block md:hidden'
@@ -49,6 +49,6 @@ export function NavBar() {
       <div className='hidden md:block'>
         <Nav />
       </div>
-    </>
+    </div>
   )
 }
