@@ -51,7 +51,7 @@ export function CartPanel({ closeModal, changeToProductPanel }: CartPanelProps) 
                 onConfirm={() => handleRemoveItemButtonClick(item.id)}
               >
                 <Button
-                  type='button'
+                  label='Remove item'
                   className='p-2 bg-orange-700 text-gray-100 grid place-content-center rounded-md w-6 h-6'
                 >
                   <Icon size={16} value='close' />
@@ -59,7 +59,7 @@ export function CartPanel({ closeModal, changeToProductPanel }: CartPanelProps) 
               </Alert>
               <CartModal onClose={handleCartCloseModal} product={item}>
                 <Button
-                  type='button'
+                  label='Edit item'
                   className='p-2 bg-orange-700 text-gray-100 grid place-content-center rounded-md w-6 h-6'
                 >
                   <Icon size={16} value='edit' />

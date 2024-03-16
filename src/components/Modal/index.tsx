@@ -50,10 +50,12 @@ const ModalComponent = (
 
   return (
     <>
-      <Slot onClick={open}>{trigger}</Slot>
+      <Slot onClick={open} aria-label='Close modal' aria-controls='modal'>
+        {trigger}
+      </Slot>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as='div' className='relative z-10' onClose={close}>
+        <Dialog id='modal' as='div' className='relative z-10' onClose={close}>
           <Transition.Child
             as={Fragment}
             enter='ease-out duration-300'
