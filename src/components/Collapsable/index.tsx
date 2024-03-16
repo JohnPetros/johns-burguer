@@ -39,7 +39,7 @@ export function Collapsable({
         </Disclosure.Button>
 
         {isOpen && (
-          <Disclosure.Panel static className='w-full py-3 px-4'>
+          <Disclosure.Panel static className='w-full py-3 px-4' aria-live='polite'>
             {children}
           </Disclosure.Panel>
         )}

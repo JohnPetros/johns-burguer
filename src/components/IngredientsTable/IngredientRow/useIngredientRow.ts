@@ -11,7 +11,7 @@ export function useIngredientRow(ingredient: Ingredient) {
     )
 
     if (isAdded) {
-      actions.removeIngreditent(ingredient.name)
+      actions.removeIngredient(ingredient.name)
       return
     }
 

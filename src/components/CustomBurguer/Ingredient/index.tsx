@@ -33,6 +33,8 @@ export function Ingredient({ name, image, position, index }: Ingredient) {
       animate='enter'
       exit='leave'
       style={{ zIndex: index }}
+      aria-live='assertive'
+      aria-label={name}
     >
       <img src={image} width={220} height={220} alt={name} loading='eager' />
     </motion.div>

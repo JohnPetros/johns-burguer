@@ -24,7 +24,7 @@ export function useCustomBurguerStore(): CustomBurguerStore {
         customBurguerStoreState.setKey('ingredients', [ingredient, ...ingredients])
       },
 
-      removeIngreditent(ingredient: string) {
+      removeIngredient(ingredient: string) {
         const { ingredients } = customBurguerStoreState.get()
 
         customBurguerStoreState.setKey(

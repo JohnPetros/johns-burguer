@@ -1,3 +1,4 @@
+import * as Checkbox from '@radix-ui/react-checkbox'
 import type { Ingredient } from '../../../@types/Ingredient'
 import { Icon } from '../../Icon'
 import { useIngredientRow } from './useIngredientRow'
@@ -11,28 +12,27 @@ export function IngredientRow({ ingredient, defaultChecked }: IngredientRowProps
   const { handleIngredientCheck } = useIngredientRow(ingredient)
 
   return (
-    <label
-      htmlFor={ingredient.name}
-      className='flex items-center justify-between cursor-pointer'
-    >
-      <div className='flex items-center gap-3'>
-        <img src={ingredient.image} alt={ingredient.name} width={32} height={32} />
-        <span className='text-ellipsis overflow-hidden'>{ingredient.name}</span>
-      </div>
-      <div className='grid place-content-center rounded-md border-2 border-gray-800 w-6 h-6 bg-transparent has-[:checked]:bg-orange-700 has-[:checked]:border-gray-50 transition duration-200'>
-        <input
-          type='checkbox'
-          id={ingredient.name}
-          className='peer hidden'
-          defaultChecked={defaultChecked}
-          onChange={handleIngredientCheck}
-        />
-        <Icon
-          value='check'
-          className='hidden peer-checked:block text-gray-100'
-          size={16}
-        />
-      </div>
-    </label>
+    <div className='flex items-center'>
+      <label
+        htmlFor={ingredient.name}
+        className='flex items-center justify-between cursor-pointer w-full'
+      >
+        <div className='flex items-center gap-3'>
+          <img src={ingredient.image} alt={ingredient.name} width={32} height={32} />
+          <span className='text-ellipsis overflow-hidden'>{ingredient.name}</span>
+        </div>
+      </label>
+      <Checkbox.Root
+        id={ingredient.name}
+        className='grid place-content-center border-2 border-gray-800 w-6 h-6 rounded-md overflow-hidden'
+        onCheckedChange={handleIngredientCheck}
+      >
+        <Checkbox.Indicator>
+          <div className='grid place-content-center bg-transparent bg-orange-500 w-6 h-6 border-2 border-gray-100 transition duration-200'>
+            <Icon value='check' className='text-gray-100' size={16} />
+          </div>
+        </Checkbox.Indicator>
+      </Checkbox.Root>
+    </div>
   )
 }
