@@ -25,6 +25,7 @@ export function IngredientRow({ ingredient, defaultChecked }: IngredientRowProps
       <Checkbox.Root
         id={ingredient.name}
         className='grid place-content-center border-2 border-gray-800 w-6 h-6 rounded-md overflow-hidden'
+        defaultChecked={defaultChecked}
         onCheckedChange={handleIngredientCheck}
       >
         <Checkbox.Indicator>

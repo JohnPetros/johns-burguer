@@ -9,7 +9,7 @@ type NavLinkProps = {
   isFilled: boolean
 }
 
-export function NavLink({ title, icon, href, isFilled = false, onClick }: NavLinkProps) {
+export function NavLink({ title, icon, href, isFilled = false }: NavLinkProps) {
   return (
     <a
       href={href}
