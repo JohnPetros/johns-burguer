@@ -17,18 +17,20 @@ const productLink = `${ROUTES.product}/${product.slug}`;
 ---
 
 <div class='shadow-md flex flex-col rounded-md'>
-  <a href={productLink}>
+  <a href={productLink} class='overflow-hidden'>
     <Image
       style={{ objectFit: 'cover' }}
       src={product.image}
       width={500}
       height={400}
+      class='hover:scale-125 transition-transform duration-500'
       alt={product.name}
     />
   </a>
   <div class='p-4'>
     <a href={productLink}>
-      <strong class='uppercase text-gray-800 font-semibold'
+      <strong
+        class='uppercase text-gray-800 font-semibold hover:text-orange-500'
         >{product.name}</strong
       >
     </a>
