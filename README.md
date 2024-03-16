@@ -179,6 +179,8 @@ This project was developed using the following technologies:
 
 - **[Headless UI](https://headlessui.com/)** to build interactive accessible ui components with React 
 
+- **[Radix UI](https://headlessui.com/)** to build accessible form components with React
+
 - **[Framer Motion](https://htmx.org/)** to animate React components
 
 > For more details about the project's dependencies like specifi versions of each dependency, se [package.json](https://github.com/JohnPetros/johns-burguer/blob/main/package.json)
