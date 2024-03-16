@@ -24,22 +24,37 @@ const { isHomePage = false } = Astro.props;
     <div class='justify-self-start lg:justify-self-auto'>
       <List title='Contact us'>
         <Item>
-          <>
+          <a
+            aria-label='phone'
+            href='tel:+12086964143'
+            target='_blank'
+            class='flex items-center gap-1'
+          >
             <Icon value='phone' size={16} />
-            (34) 3333-3333
-          </>
+            (120) 869-6414-3
+          </a>
         </Item>
         <Item>
-          <>
+          <a
+            aria-label='whatsapp'
+            href='whatsapp://send?abid=12013514000&text=Hello%2C%20World!'
+            target='_blank'
+            class='flex items-center gap-1'
+          >
             <Icon value='whatsapp' size={16} />
-            (34) 9 3333-3333
-          </>,
+            (120) 135-1400-0
+          </a>
         </Item>
         <Item>
-          <>
+          <a
+            aria-label='e-mail'
+            href='mailto:rivolo5178@cmheia.com'
+            target='_blank'
+            class='flex items-center gap-1'
+          >
             <Icon value='mail' size={16} />
-            sac@johnsburguer.com
-          </>,
+            rivolo5178@cmheia.com
+          </a>
         </Item>
       </List>
     </div>
@@ -67,7 +82,7 @@ const { isHomePage = false } = Astro.props;
           <a
             href='https://www.instagram.com/gvanrossum/'
             class='grid place-content-center rounded-full bg-zinc-900 p-2'
-            aria-label="instagram"
+            aria-label='instagram'
           >
             <Icon value='instagram' size={20} />
           </a>
@@ -76,7 +91,7 @@ const { isHomePage = false } = Astro.props;
           <a
             href='https://www.facebook.com/share/TxSRAK4e6jU2b8qW/?mibextid=qi2Omg'
             class='grid place-content-center rounded-full bg-zinc-900 p-2'
-            aria-label="facebook"
+            aria-label='facebook'
           >
             <Icon value='facebook' size={20} />
           </a>

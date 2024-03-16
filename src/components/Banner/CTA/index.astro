@@ -1,3 +1,7 @@
+---
+import { Icon } from '../../Icon';
+---
+
 <>
   <span class='font-cursive text-3xl text-yellow-400'> Are you hungry?</span>
   <h1 class='mt-4 text-xl uppercase text-white'>
@@ -5,10 +9,18 @@
     <br />
     Fast delivery.
   </h1>
-  <div class='mt-4 flex flex-col gap-3 md:flex-row'>
+  <div class='mt-4 flex gap-3'>
+    <a
+      href='whatsapp://send?abid=12013514000&text=Hello%2C%20World!'
+      target='_blank'
+      class='flex items-center gap-2 rounded-md bg-orange-700 text-white p-3 hover:ring-2 focus-visible:ring-yellow-400 hover:ring-yellow-400 transition-shadow w-max'
+    >
+      <Icon value='whatsapp' />
+      Whatsapp</a
+    >
     <a
       href='#menu'
-      class='rounded-md bg-orange-700 text-white p-3 hover:ring-2 focus-visible:ring-yellow-400 hover:ring-yellow-400 transition-shadow'
+      class='rounded-md bg-orange-700 text-white p-3 hover:ring-2 focus-visible:ring-yellow-400 hover:ring-yellow-400 transition-shadow w-max'
       >Order now</a
     >
   </div>
