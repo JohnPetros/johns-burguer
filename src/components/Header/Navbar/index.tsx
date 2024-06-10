@@ -16,7 +16,7 @@ export function NavBar() {
   const { isVisible, handleHamburguerMenu } = useNavBar()
 
   return (
-    <div className='bg-orange-700'>
+    <div className='bg-orange-500'>
       <button
         type='button'
         className='z-50 block md:hidden'

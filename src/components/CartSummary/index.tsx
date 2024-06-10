@@ -18,7 +18,7 @@ export function CartSummary({ items }: CheckoutSummaryProps) {
       </div>
       <span className='block w-full h-px bg-gray-200 rounded-md' />
       <div className='flex items-center justify-between'>
-        <dt className='text-orange-700 text-lg font-semibold'>Total</dt>
+        <dt className='text-orange-500 text-lg font-semibold'>Total</dt>
         <dd className='text-gray-900 text-lg font-semibold'>{formatPrice(total)}</dd>
       </div>
     </dl>

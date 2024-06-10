@@ -21,7 +21,7 @@ export function Button({
       type={type}
       aria-label={label}
       className={twMerge(
-        'flex items-center justify-center gap-2 rounded-md bg-orange-700 px-3 py-2 text-sm text-white hover:ring-2 focus-visible:ring-yellow-400 hover:ring-yellow-400 transition-shadow font-semibold',
+        'flex items-center justify-center gap-2 rounded-md bg-orange-500 px-3 py-2 text-sm text-white hover:ring-2 focus-visible:ring-yellow-400 hover:ring-yellow-400 transition-shadow font-semibold',
         className
       )}
       onClick={onClick}

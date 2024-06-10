@@ -21,7 +21,7 @@ export function Summary({ totalCost, isLoading }: SummaryProps) {
       <h2 className='text-lg'>Summary</h2>
       <Separator className='bg-gray-200' />
       <div className='flex items-center justify-between'>
-        <strong className='text-2xl text-orange-700 font-semibold'>
+        <strong className='text-2xl text-orange-500 font-semibold'>
           {formatPrice(totalCost)}
         </strong>
         <Alert

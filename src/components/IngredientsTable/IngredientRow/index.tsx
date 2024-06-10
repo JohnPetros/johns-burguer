@@ -1,4 +1,5 @@
 import * as Checkbox from '@radix-ui/react-checkbox'
+import { twMerge } from 'tailwind-merge'
 import type { Ingredient } from '../../../@types/Ingredient'
 import { Icon } from '../../Icon'
 import { useIngredientRow } from './useIngredientRow'
@@ -24,8 +25,12 @@ export function IngredientRow({ ingredient, defaultChecked }: IngredientRowProps
       </label>
       <Checkbox.Root
         id={ingredient.name}
-        className='grid place-content-center border-2 border-gray-800 w-6 h-6 rounded-md overflow-hidden'
+        className={twMerge(
+          'grid place-content-center border-2 border-gray-800 w-6 h-6 rounded-md overflow-hidden data-state=checked:bg-orange-500',
+          defaultChecked ? 'bg-orange-500' : 'bg-white'
+        )}
         defaultChecked={defaultChecked}
+        checked={defaultChecked}
         onCheckedChange={handleIngredientCheck}
       >
         <Checkbox.Indicator>

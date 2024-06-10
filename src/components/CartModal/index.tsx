@@ -41,7 +41,7 @@ export function CartModal({ children: trigger, product, onClose }: CartModalProp
             <Tab
               className={twMerge(
                 tabClassName,
-                activeTabIndex === 0 ? 'bg-orange-700 text-gray-100' : 'bg-transparent'
+                activeTabIndex === 0 ? 'bg-orange-500 text-gray-100' : 'bg-transparent'
               )}
             >
               <Icon
@@ -54,7 +54,7 @@ export function CartModal({ children: trigger, product, onClose }: CartModalProp
               disabled={isCartTabDisabled}
               className={twMerge(
                 tabClassName,
-                activeTabIndex === 1 ? 'bg-orange-700 text-gray-100' : 'bg-transparent',
+                activeTabIndex === 1 ? 'bg-orange-500 text-gray-100' : 'bg-transparent',
                 isCartTabDisabled ? 'opacity-10 pointer-events-none' : ''
               )}
             >
