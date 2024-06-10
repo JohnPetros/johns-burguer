@@ -1,24 +1,29 @@
-import Stripe from "stripe"
+import Stripe from 'stripe'
 
-import type { Product } from "../../../../@types/Product"
-import type { IProductsController } from "../../interfaces/IProductsController"
-import { StripeProductAdapter } from "../adapters/StripeProductAdapter"
+import type { Product } from '../../../../@types/Product'
+import type { IProductsController } from '../../interfaces/IProductsController'
+import { StripeProductAdapter } from '../adapters/StripeProductAdapter'
 
 export const StripeProductsController = (stripe: Stripe): IProductsController => {
   return {
     async getAllProducts() {
-      const stripeProducts = await stripe.products.list({ limit: 100 })
+      try {
+        const stripeProducts = await stripe.products.list({ limit: 100 })
 
-      const products: Product[] = []
+        const products: Product[] = []
 
-      for (const stripeProduct of stripeProducts.data) {
-        if (stripeProduct.name === 'Subscription') continue
+        for (const stripeProduct of stripeProducts.data) {
+          if (stripeProduct.name === 'Subscription') continue
 
-        const product = await StripeProductAdapter(stripeProduct, stripe)
-        products.push(product)
+          const product = await StripeProductAdapter(stripeProduct, stripe)
+          products.push(product)
+        }
+
+        return products
+      } catch (error) {
+        console.error(`getAllProducts Error: ${error}`)
+        throw new Error('Erro ao buscar todos os produtos')
       }
-
-      return products
     },
 
     async getProductBySlug(slug: string) {

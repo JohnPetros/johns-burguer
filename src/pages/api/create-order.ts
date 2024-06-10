@@ -12,16 +12,11 @@ type Request = {
 export const POST: APIRoute = async ({ request }) => {
   const { cartItems }: Request = await request.json()
 
-  // console.log({ cartItems })
+  if (!cartItems || !cartItems.length) return new Response('Cart items are not provided')
 
-  // if (!cartItems || !cartItems.length) return new Response('Cart items are not provided')
+  const totalCost = calculateTotalCartItemsCost(cartItems)
 
-  // const totalCost = calculateTotalCartItemsCost(cartItems)
+  const { checkoutToken, orderId } = await Api().createOrder(totalCost)
 
-  // const { checkoutToken, orderId } = await Api().createOrder(totalCost)
-
-  // console.log({ orderId })
-  // console.log({ checkoutToken })
-
-  return new Response(JSON.stringify({ checkoutToken: '', orderId: '' }))
+  return new Response(JSON.stringify({ checkoutToken: checkoutToken, orderId: orderId }))
 }
