@@ -36,10 +36,22 @@ The goal of developing this project was learn the basic features of [Astro](http
 <table align="center">
   <tr>
     <td align="center" width="1000">
-    <img src=".github/app-preview.gif" alt="Preview of the application" />
+      <img src="/documentation/images/home.png" alt="Preview of Home Page" />
+    </td>
+    <td align="center" width="1000">
+      <img src="/documentation/images/cart.png" alt="Preview of Cart" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="1000">
+      <img src="/documentation/images/burguer-maker.png" alt="Preview of Burguer Maker Page" />
+    </td>
+    <td align="center" width="1000">
+      <img src="/documentation/images/checkout.png" alt="Preview of Checkout" />
     </td>
   </tr>
 </table>
+
 
 ---
 
