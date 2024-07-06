@@ -189,19 +189,19 @@ The goal of developing this project was learn the basic features of [Astro](http
 
 This project was developed using the following technologies:
 
-- **[Astro](https://astro.build/)** to build the server, pages and static components
+- **[Astro](https://astro.build/)** for building the server, pages and static components
 
-- **[React](https://tailwindcss.com/)** to build interactive components
+- **[React](https://tailwindcss.com/)** for building interactive components
 
-- **[TailwindCSS](https://tailwindcss.com/)** to style the app
+- **[TailwindCSS](https://tailwindcss.com/)** for styling the app
 
-- **[Preline UI](https://preline.co/)** to build static accessible ui components with tailwindCSS
+- **[Preline UI](https://preline.co/)** for building static accessible ui components with tailwindCSS
 
-- **[Headless UI](https://headlessui.com/)** to build interactive accessible ui components with React 
+- **[Headless UI](https://headlessui.com/)** for building interactive accessible ui components with React 
 
-- **[Radix UI](https://headlessui.com/)** to build accessible form components with React
+- **[Radix UI](https://headlessui.com/)** for building accessible form components with React
 
-- **[Framer Motion](https://htmx.org/)** to animate React components
+- **[Framer Motion](https://htmx.org/)** for animating React components
 
 > For more details about the project's dependencies like specifi versions of each dependency, se [package.json](https://github.com/JohnPetros/johns-burguer/blob/main/package.json)
 
