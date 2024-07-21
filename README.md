@@ -169,7 +169,7 @@ The goal of developing this project was learn the basic features of [Astro](http
 #### Custom burguer
 
 - [x] The user should be alerted before going to the checkout after completing their burguer
-- [] The user should be alerted before leave the custom burguer section
+- [ ] The user should be alerted before leave the custom burguer section
 
 #### Layout
 
